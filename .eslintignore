@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+.idea
+.vite-ssg-temp
+.DS_Store
+dist
+dist-ssr
+yarn-error.log
+yarn.lock
+pnpm-lock.yaml
