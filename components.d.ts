@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
     MenuBubble: typeof import('./src/components/menuBubble/Index.vue')['default']
     MenuBubbleImageBubbleMenu: typeof import('./src/components/menuBubble/ImageBubbleMenu.vue')['default']
     MenuBubbleLinkBubbleMenu: typeof import('./src/components/menuBubble/LinkBubbleMenu.vue')['default']
+    MenuCommandsCodeBlock: typeof import('./src/components/menuCommands/CodeBlock.vue')['default']
     MenuCommandsCodeViewCommandButton: typeof import('./src/components/menuCommands/CodeViewCommandButton.vue')['default']
     MenuCommandsColorPopover: typeof import('./src/components/menuCommands/ColorPopover.vue')['default']
     MenuCommandsCommandButton: typeof import('./src/components/menuCommands/CommandButton.vue')['default']

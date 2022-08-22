@@ -1,13 +1,17 @@
 <template>
   <el-popover
+    ref="popoverRef"
     :disabled="isCodeViewMode"
     placement="bottom"
     trigger="click"
     popper-class="el-tiptap-popper"
-    ref="popoverRef"
   >
     <div class="color-set">
-      <div v-for="color in colorSet" :key="color" class="color__wrapper">
+      <div
+        v-for="color in colorSet"
+        :key="color"
+        class="color__wrapper"
+      >
         <div
           :style="{
             'background-color': color,

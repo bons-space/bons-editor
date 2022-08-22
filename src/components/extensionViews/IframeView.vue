@@ -1,6 +1,12 @@
 <template>
-  <node-view-wrapper as="div" class="iframe">
-    <iframe class="iframe__embed" :src="node!.attrs.src"></iframe>
+  <node-view-wrapper
+    as="div"
+    class="iframe"
+  >
+    <iframe
+      class="iframe__embed"
+      :src="node!.attrs.src"
+    />
   </node-view-wrapper>
 </template>
 

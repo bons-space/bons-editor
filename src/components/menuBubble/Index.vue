@@ -1,12 +1,18 @@
 <template>
-  <bubble-menu v-if="editor" :editor="editor">
+  <bubble-menu
+    v-if="editor"
+    :editor="editor"
+  >
     <div
       :class="{
         'el-tiptap-editor__menu-bubble--active': bubbleMenuEnable,
       }"
       class="el-tiptap-editor__menu-bubble"
     >
-      <link-bubble-menu v-if="activeMenu === 'link'" :editor="editor">
+      <link-bubble-menu
+        v-if="activeMenu === 'link'"
+        :editor="editor"
+      >
         <template #prepend>
           <div
             v-if="textMenuEnable"
@@ -21,9 +27,9 @@
 
       <template v-else-if="activeMenu === 'default'">
         <component
+          :is="spec.component"
           v-for="(spec, i) in generateCommandButtonComponentSpecs()"
           :key="'command-button' + i"
-          :is="spec.component"
           :enable-tooltip="enableTooltip"
           v-bind="spec.componentProps"
           :readonly="isCodeViewMode"
@@ -69,19 +75,19 @@ export default defineComponent({
     },
   },
 
-  data() {
-    return {
-      activeMenu: MenuType.NONE,
-      isLinkBack: false,
-    };
-  },
-
   setup() {
     const t = inject('t');
     const enableTooltip = inject('enableTooltip', true);
     const isCodeViewMode = inject('isCodeViewMode', false);
 
     return { t, enableTooltip, isCodeViewMode };
+  },
+
+  data() {
+    return {
+      activeMenu: MenuType.NONE,
+      isLinkBack: false,
+    };
   },
 
   computed: {

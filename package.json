@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "lint": "eslint --ext .ts,.vue src --fix"
+    "lint": "eslint --ext .ts,.vue src --fix",
+    "release": "standard-version"
   },
   "keywords": [
     "editor",
@@ -23,6 +24,7 @@
     "@tiptap/extension-character-count": "^2.0.0-beta.31",
     "@tiptap/extension-code": "^2.0.0-beta.28",
     "@tiptap/extension-code-block": "^2.0.0-beta.42",
+    "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.73",
     "@tiptap/extension-color": "^2.0.0-beta.12",
     "@tiptap/extension-document": "^2.0.0-beta.17",
     "@tiptap/extension-gapcursor": "^2.0.0-beta.39",
@@ -52,20 +54,25 @@
     "@tiptap/vue-3": "^2.0.0-beta.96"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@types/node": "^17.0.34",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "codemirror": "5",
+    "cz-conventional-changelog": "^3.3.0",
     "element-plus": "^2.2.13",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-typescript": "^0.14.0",
     "eslint-plugin-vue": "^7.20.0",
+    "git-cz": "^4.9.0",
     "lint-staged": "^13.0.3",
     "rollup-plugin-visualizer": "^5.7.1",
     "sass": "^1.54.4",
+    "standard-version": "^9.5.0",
     "typescript": "^4.7.4",
     "unplugin-auto-import": "^0.9.5",
     "unplugin-vue-components": "^0.21.2",
@@ -78,11 +85,17 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint -E GIT_PARAMS"
   },
   "lint-staged": {
     "*.{js,vue}": [
       "yarn lint"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
   }
 }

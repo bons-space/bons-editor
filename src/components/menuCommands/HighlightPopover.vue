@@ -1,13 +1,17 @@
 <template>
   <el-popover
+    ref="popoverRef"
     :disabled="isCodeViewMode"
     placement="bottom"
     trigger="click"
     popper-class="el-tiptap-popper"
-    ref="popoverRef"
   >
     <div class="color-set">
-      <div v-for="color in colorSet" :key="color" class="color__wrapper">
+      <div
+        v-for="color in colorSet"
+        :key="color"
+        class="color__wrapper"
+      >
         <div
           :style="{
             'background-color': color,
@@ -44,16 +48,14 @@
 <script lang="ts">
 import { computed, defineComponent, inject, ref, unref, watch } from 'vue';
 import { Editor, getMarkAttributes } from '@tiptap/vue-3';
-import { ElButton, ElPopover, ElInput } from 'element-plus';
+import { ElPopover } from 'element-plus';
 import CommandButton from './CommandButton.vue';
 
 export default defineComponent({
   name: 'HighlightPopover',
 
   components: {
-    ElButton,
     ElPopover,
-    ElInput,
     CommandButton,
   },
 

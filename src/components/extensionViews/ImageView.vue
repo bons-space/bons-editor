@@ -1,5 +1,8 @@
 <template>
-  <node-view-wrapper as="span" :class="imageViewClass">
+  <node-view-wrapper
+    as="span"
+    :class="imageViewClass"
+  >
     <div
       :class="{
         'image-view__body--focused': selected,
@@ -15,7 +18,7 @@
         :height="height"
         class="image-view__body__image"
         @click="selectImage"
-      />
+      >
 
       <div
         v-if="editor?.isEditable"
@@ -112,6 +115,8 @@ export default defineComponent({
         h: 0,
         dir: '',
       },
+
+      resizeOb: null
     };
   },
 

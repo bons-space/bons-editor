@@ -1,9 +1,9 @@
 <template>
   <div class="el-tiptap-editor__menu-bar">
     <component
+      :is="spec.component"
       v-for="(spec, i) in generateCommandButtonComponentSpecs()"
       :key="'command-button' + i"
-      :is="spec.component"
       :enable-tooltip="enableTooltip"
       v-bind="spec.componentProps"
       :readonly="isCodeViewMode"

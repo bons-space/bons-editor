@@ -1,8 +1,14 @@
 <template>
   <div class="image-bubble-menu">
-    <image-display-command-button :node="node" :update-attrs="updateAttrs" />
+    <image-display-command-button
+      :node="node"
+      :update-attrs="updateAttrs"
+    />
 
-    <edit-image-command-button :node="node" :update-attrs="updateAttrs" />
+    <edit-image-command-button
+      :node="node"
+      :update-attrs="updateAttrs"
+    />
 
     <remove-image-command-button :editor="editor" />
   </div>

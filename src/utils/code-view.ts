@@ -17,11 +17,10 @@ export function extendCodemirror(CodeMirror) {
   });
 
   CodeMirror.defineExtension('autoFormatRange', function(from, to) {
-    const cm = this;
-    const outer = cm.getMode();
-    const text = cm.getRange(from, to).split('\n');
-    const state = CodeMirror.copyState(outer, cm.getTokenAt(from).state);
-    const tabSize = cm.getOption('tabSize');
+    const outer = this.getMode();
+    const text = this.getRange(from, to).split('\n');
+    const state = CodeMirror.copyState(outer, this.getTokenAt(from).state);
+    const tabSize = this.getOption('tabSize');
 
     let out = '';
     let lines = 0;
@@ -51,10 +50,10 @@ export function extendCodemirror(CodeMirror) {
       if (!atSol && i < text.length - 1) newline();
     }
 
-    cm.operation(function() {
-      cm.replaceRange(out, from, to);
-      for (let cur = from.line + 1, end = from.line + lines; cur <= end; ++cur) { cm.indentLine(cur, 'smart'); }
-      cm.setSelection(from, cm.getCursor(false));
+    this.operation(function() {
+      this.replaceRange(out, from, to);
+      for (let cur = from.line + 1, end = from.line + lines; cur <= end; ++cur) { this.indentLine(cur, 'smart'); }
+      this.setSelection(from, this.getCursor(false));
     });
   });
 }

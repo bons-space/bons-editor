@@ -1,9 +1,9 @@
 <template>
   <el-popover
+    ref="popoverRef"
     placement="top"
     trigger="click"
     popper-class="el-tiptap-popper"
-    ref="popoverRef"
   >
     <div class="el-tiptap-popper__menu">
       <div
@@ -53,6 +53,13 @@ export default defineComponent({
     updateAttrs: nodeViewProps['updateAttributes'],
   },
 
+  setup() {
+    const t = inject('t');
+    const enableTooltip = inject('enableTooltip', true);
+
+    return { t, enableTooltip };
+  },
+
   data() {
     return {
       displayCollection: [
@@ -62,13 +69,6 @@ export default defineComponent({
         ImageDisplay.FLOAT_RIGHT,
       ],
     };
-  },
-
-  setup() {
-    const t = inject('t');
-    const enableTooltip = inject('enableTooltip', true);
-
-    return { t, enableTooltip };
   },
 
   computed: {

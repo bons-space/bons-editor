@@ -11,7 +11,10 @@
       icon="text-height"
     />
     <template #dropdown>
-      <el-dropdown-menu slot="dropdown" class="el-tiptap-dropdown-menu">
+      <el-dropdown-menu
+        slot="dropdown"
+        class="el-tiptap-dropdown-menu"
+      >
         <el-dropdown-item
           v-for="lineHeight in lineHeights"
           :key="lineHeight"
@@ -65,7 +68,7 @@ export default defineComponent({
     lineHeights() {
       const lineHeightOptions = this.editor.extensionManager.extensions.find(
         (e) => e.name === 'lineHeight'
-      )!.options;
+      )?.options;
       return lineHeightOptions.lineHeights;
     },
   },

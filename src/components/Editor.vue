@@ -76,7 +76,7 @@ import {Trans} from '@/i18n';
 import {useCodeView, useCharacterCount, useEditorStyle} from '@/hooks';
 
 import MenuBar from './menuBar/Index.vue';
-import MenuBubble from './menuBubble/Index.vue';
+// import MenuBubble from './menuBubble/Index.vue';
 import zh from '@/i18n/locales/zh';
 
 // interface Props {
@@ -198,7 +198,7 @@ const extensions = props.extensions
         emptyEditorClass: 'el-tiptap-editor--empty',
         emptyNodeClass: 'el-tiptap-editor__placeholder',
         showOnlyCurrent: false,
-        placeholder: ({node}) => {
+        placeholder: () => {
           return props.placeholder;
         },
       }),

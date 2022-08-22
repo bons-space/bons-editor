@@ -16,12 +16,19 @@
       width="400px"
       custom-class="el-tiptap-edit-link-dialog"
     >
-      <el-form :model="linkAttrs" label-position="right" size="small">
+      <el-form
+        :model="linkAttrs"
+        label-position="right"
+        size="small"
+      >
         <el-form-item
           :label="t('editor.extensions.Link.add.control.href')"
           prop="href"
         >
-          <el-input v-model="linkAttrs.href" autocomplete="off" />
+          <el-input
+            v-model="linkAttrs.href"
+            autocomplete="off"
+          />
         </el-form-item>
 
         <el-form-item prop="openInNewTab">
@@ -32,7 +39,11 @@
       </el-form>
 
       <template #footer>
-        <el-button size="small" round @click="closeAddLinkDialog">
+        <el-button
+          size="small"
+          round
+          @click="closeAddLinkDialog"
+        >
           {{ t('editor.extensions.Link.add.control.cancel') }}
         </el-button>
 
