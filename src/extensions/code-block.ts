@@ -1,11 +1,21 @@
 import type { Editor } from '@tiptap/core';
-import TiptapCodeBlock from '@tiptap/extension-code-block';
-import CommandButton from '@/components/menuCommands/CommandButton.vue';
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
+// import TiptapCodeBlock from '@tiptap/extension-code-block';
+import TiptapCodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 
-const CodeBlock = TiptapCodeBlock.extend({
+import CommandButton from '@/components/menuCommands/CommandButton.vue';
+import CodeBlockLanguageSelect from '@/components/menuCommands/CodeBlockLanguageSelect.vue'
+
+// @ts-ignore
+const CodeBlock = TiptapCodeBlockLowlight.extend({
+  addNodeView() {
+    return VueNodeViewRenderer(CodeBlockLanguageSelect)
+  },
   addOptions() {
     return {
       ...this.parent?.(),
+      languageClassPrefix: 'language-',
+      defaultLanguage: 'plaintext',
       button({ editor, t }: { editor: Editor; t: (...args: any[]) => string }) {
         return {
           component: CommandButton,
@@ -20,6 +30,15 @@ const CodeBlock = TiptapCodeBlock.extend({
         };
       },
     };
+  },
+  addAttributes() {
+    // Return an object with attribute configuration
+    return {
+      ...this.parent?.(),
+      class: {
+        default: 'hljs',
+      },
+    }
   },
 });
 

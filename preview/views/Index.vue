@@ -44,25 +44,37 @@ import 'codemirror/lib/codemirror.css'; // import base style
 import 'codemirror/mode/xml/xml.js'; // language
 import 'codemirror/addon/selection/active-line.js'; // require active-line.js
 import 'codemirror/addon/edit/closetag.js';
+// load all highlight.js languages
+import {lowlight} from 'lowlight'
 
-const content = ref(`<p># dd dsa dddd
-</p>
-<pre>
-<code></code>
-</pre>
-<p>
-</p>
-<iframe src="https://github1s.com/Leecason/element-tiptap/blob/master/README.md" frameborder="0" allowfullscreen="true"></iframe>
-<p>`)
+const content = ref(` <p>
+          Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.
+        </p>
+        <pre><code class="language-javascript">for (var i=1; i <= 20; i++)
+{
+  if (i % 15 == 0)
+    console.log("FizzBuzz");
+  else if (i % 3 == 0)
+    console.log("Fizz");
+  else if (i % 5 == 0)
+    console.log("Buzz");
+  else
+    console.log(i);
+}</code></pre>
+        <p>
+          Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.
+        </p>
+      \``)
 
 const extensions = [
   Document, Text, Paragraph, Heading, Bold, Underline, Italic, Strike, Link, History,
   Color, FontFamily, FontSize, Highlight, Code, HardBreak, HorizontalRule, TextAlign, Indent,
-  LineHeight, FormatClear, Fullscreen, SelectAll, CodeBlock, BulletList, OrderedList, Image,
+  LineHeight, FormatClear, Fullscreen, SelectAll,  BulletList, OrderedList, Image,
   TaskList,
   Gapcursor,
   Table.configure({ resizable: true }),
   Iframe,
+  CodeBlock.configure({  languageClassPrefix: 'language-',defaultLanguage: 'plaintext',lowlight }),
   CodeView.configure({
     codemirror,
     codemirrorOptions: {

@@ -292,4 +292,5 @@ provide('t', t);
 <style lang="scss">
 @import '../styles/editor.scss';
 @import '../styles/command-button.scss';
+@import "highlight.js/styles/atom-one-dark.css";
 </style>

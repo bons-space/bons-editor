@@ -4,10 +4,10 @@
 module.exports = {
   disableEmoji: false,
   format: '{type}{scope}: {emoji}{subject}',
-  list: ['test', 'feat', 'fix', 'chore', 'docs', 'refactor', 'style', 'ci', 'perf'],
+  list: ['feat', 'fix', 'chore', 'docs', 'refactor', 'style', 'perf'],
   maxMessageLength: 64,
   minMessageLength: 3,
-  questions: ['type', 'scope', 'subject', 'body', 'breaking', 'issues', 'lerna'],
+  questions: ['type', 'scope', 'subject', 'body', 'issues',],
   scopes: [],
   // 翻译了一下描述部分
   types: {
@@ -26,10 +26,10 @@ module.exports = {
       emoji: "✏️",
       value: "docs"
     },
-    "feat": {
-      "description": "一个新的特性",
-      "emoji": "🎸",
-      "value": "feat"
+    feat: {
+      description: "一个新的特性",
+      emoji: "🎸",
+      value: "feat"
     },
     fix: {
       description: "修复bug",
@@ -41,10 +41,10 @@ module.exports = {
       emoji: "⚡️",
       value: "perf"
     },
-    "refactor": {
-      "description": "一些代码结构上优化，既不是新特性也不是修 Bug（比如函数改个名字）",
-      "emoji": "💡",
-      "value": "refactor"
+    refactor: {
+      description: "一些代码结构上优化，既不是新特性也不是修 Bug（比如函数改个名字）",
+      emoji: "💡",
+      value: "refactor"
     },
     release: {
       description: "Create a release commit",
