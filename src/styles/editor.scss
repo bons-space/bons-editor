@@ -201,9 +201,7 @@
     }
 
     code {
-      background-color: $lighter-primary-color;
       border-radius: 4px;
-      color: $primary-color;
       display: inline-block;
       font-size: 14px;
       font-weight: 700;
@@ -211,9 +209,6 @@
     }
 
     pre {
-      background-color: $primary-text-color;
-      color: $lighter-primary-color;
-      font-size: 16px;
       overflow-x: auto;
       padding: 14px 20px;
       margin: 10px 0;
@@ -224,7 +219,6 @@
         border-radius: 0;
         color: inherit;
         display: block;
-        font-family: 'Menlo,Monaco,Consolas,Courier,monospace';
         font-size: inherit;
         font-weight: normal;
         padding: 0;

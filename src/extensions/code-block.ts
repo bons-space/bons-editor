@@ -31,15 +31,6 @@ const CodeBlock = TiptapCodeBlockLowlight.extend({
       },
     };
   },
-  addAttributes() {
-    // Return an object with attribute configuration
-    return {
-      ...this.parent?.(),
-      class: {
-        default: 'hljs',
-      },
-    }
-  },
 });
 
 export default CodeBlock;
