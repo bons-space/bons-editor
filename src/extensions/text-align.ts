@@ -16,28 +16,26 @@ const TextAlign = TiptapTextAlign.extend({
         extension: Extension;
         t: (...args: any[]) => string;
       }) {
-        return extension.options.alignments.reduce((acc, alignment) => {
-          return acc.concat({
-            component: CommandButton,
-            componentProps: {
-              command: () => {
-                if (editor.isActive({ textAlign: alignment })) {
-                  editor.commands.unsetTextAlign();
-                } else {
-                  editor.commands.setTextAlign(alignment);
-                }
-              },
-              isActive:
+        return extension.options.alignments.reduce((acc, alignment) => acc.concat({
+          component: CommandButton,
+          componentProps: {
+            command: () => {
+              if (editor.isActive({ textAlign: alignment })) {
+                editor.commands.unsetTextAlign();
+              } else {
+                editor.commands.setTextAlign(alignment);
+              }
+            },
+            isActive:
                 alignment === 'left'
                   ? false
                   : editor.isActive({ textAlign: alignment }),
-              icon: `align-${alignment}`,
-              tooltip: t(
-                `editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`
-              ),
-            },
-          });
-        }, []);
+            icon: `align-${alignment}`,
+            tooltip: t(
+              `editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`,
+            ),
+          },
+        }), []);
       },
     };
   },

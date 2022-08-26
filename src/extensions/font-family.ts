@@ -1,7 +1,6 @@
 import { Editor, Extension } from '@tiptap/core';
 import { DEFAULT_FONT_FAMILY_MAP } from '@/utils/font-type';
 import FontFamilyDropdown from '@/components/menuCommands/FontFamilyDropdown.vue';
-import TextStyle from '@tiptap/extension-text-style';
 
 export type FontFamilyOptions = {
   types: string[];
@@ -47,8 +46,7 @@ const FontFamily = Extension.create<FontFamilyOptions>({
         attributes: {
           fontFamily: {
             default: null,
-            parseHTML: (element) =>
-              element.style.fontFamily.replace(/['"]/g, ''),
+            parseHTML: (element) => element.style.fontFamily.replace(/['"]/g, ''),
             renderHTML: (attributes) => {
               if (!attributes.fontFamily) {
                 return {};
@@ -67,24 +65,14 @@ const FontFamily = Extension.create<FontFamilyOptions>({
   addCommands() {
     return {
       setFontFamily:
-        (fontFamily) =>
-        ({ chain }) => {
-          return chain().setMark('textStyle', { fontFamily }).run();
-        },
+        (fontFamily) => ({ chain }) => chain().setMark('textStyle', { fontFamily }).run(),
 
       unsetFontFamily:
-        () =>
-        ({ chain }) => {
-          return chain()
-            .setMark('textStyle', { fontFamily: null })
-            .removeEmptyTextStyle()
-            .run();
-        },
+        () => ({ chain }) => chain()
+          .setMark('textStyle', { fontFamily: null })
+          .removeEmptyTextStyle()
+          .run(),
     };
-  },
-
-  addExtensions() {
-    return [TextStyle];
   },
 });
 

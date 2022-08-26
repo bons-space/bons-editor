@@ -10,17 +10,9 @@
   </node-view-wrapper>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { defineProps } from 'vue';
 import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3';
 
-export default defineComponent({
-  name: 'IframeView',
-
-  components: {
-    NodeViewWrapper,
-  },
-
-  props: nodeViewProps,
-});
+defineProps(nodeViewProps)
 </script>

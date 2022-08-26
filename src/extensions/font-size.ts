@@ -5,7 +5,6 @@ import {
   DEFAULT_FONT_SIZE,
 } from '@/utils/font-size';
 import FontSizeDropdown from '@/components/menuCommands/FontSizeDropdown.vue';
-import TextStyle from '@tiptap/extension-text-style';
 
 export type FontSizeOptions = {
   types: string[];
@@ -70,24 +69,15 @@ const FontSize = Extension.create<FontSizeOptions>({
   addCommands() {
     return {
       setFontSize:
-        (fontSize) =>
-        ({ chain }) => {
-          return chain().setMark('textStyle', { fontSize }).run();
-        },
+        (fontSize) => ({ chain }) => chain().setMark('textStyle', { fontSize }).run(),
       unsetFontSize:
-        () =>
-        ({ chain }) => {
-          return chain()
-            .setMark('textStyle', { fontSize: DEFAULT_FONT_SIZE })
-            .removeEmptyTextStyle()
-            .run();
-        },
+        () => ({ chain }) => chain()
+          .setMark('textStyle', { fontSize: DEFAULT_FONT_SIZE })
+          .removeEmptyTextStyle()
+          .run(),
     };
   },
 
-  addExtensions() {
-    return [TextStyle];
-  },
 });
 
 export default FontSize;

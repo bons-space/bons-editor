@@ -75,7 +75,7 @@ const Indent = Extension.create<IndentOptions>({
                 return {};
               }
 
-              return { ['data-indent']: attributes.indent };
+              return { 'data-indent': attributes.indent };
             },
           },
         },
@@ -85,16 +85,14 @@ const Indent = Extension.create<IndentOptions>({
 
   addCommands() {
     return {
-      indent: () =>
-        createIndentCommand({
-          delta: IndentProps.more,
-          types: this.options.types,
-        }),
-      outdent: () =>
-        createIndentCommand({
-          delta: IndentProps.less,
-          types: this.options.types,
-        }),
+      indent: () => createIndentCommand({
+        delta: IndentProps.more,
+        types: this.options.types,
+      }),
+      outdent: () => createIndentCommand({
+        delta: IndentProps.less,
+        types: this.options.types,
+      }),
     };
   },
 

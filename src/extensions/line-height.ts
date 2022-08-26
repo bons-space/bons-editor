@@ -46,16 +46,14 @@ const LineHeight = Extension.create<LineHeightOptions>({
         attributes: {
           lineHeight: {
             default: null,
-            parseHTML: (element) => {
-              return transformCSStoLineHeight(element.style.lineHeight) || null;
-            },
+            parseHTML: (element) => transformCSStoLineHeight(element.style.lineHeight) || null,
             renderHTML: (attributes) => {
               if (!attributes.lineHeight) {
                 return {};
               }
 
               const cssLineHeight = transformLineHeightToCSS(
-                attributes.lineHeight
+                attributes.lineHeight,
               );
 
               return {
@@ -73,12 +71,7 @@ const LineHeight = Extension.create<LineHeightOptions>({
       setLineHeight: (lineHeight) => createLineHeightCommand(lineHeight),
 
       unsetLineHeight:
-        () =>
-        ({ commands }) => {
-          return this.options.types.every((type) =>
-            commands.resetAttributes(type, 'lineHeight')
-          );
-        },
+        () => ({ commands }) => this.options.types.every((type) => commands.resetAttributes(type, 'lineHeight')),
     };
   },
 });

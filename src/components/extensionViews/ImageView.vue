@@ -12,8 +12,8 @@
     >
       <img
         :src="src"
-        :title="node!.attrs.title"
-        :alt="node!.attrs.alt"
+        :title="node?.attrs.title"
+        :alt="node?.attrs.alt"
         :width="width"
         :height="height"
         class="image-view__body__image"
@@ -116,25 +116,25 @@ export default defineComponent({
         dir: '',
       },
 
-      resizeOb: null
+      resizeOb: null,
     };
   },
 
   computed: {
     src(): string {
-      return this.node!.attrs.src;
+      return this.node?.attrs.src;
     },
 
     width(): number {
-      return this.node!.attrs.width;
+      return this.node?.attrs.width;
     },
 
     height(): number {
-      return this.node!.attrs.height;
+      return this.node?.attrs.height;
     },
 
     display(): ImageDisplay {
-      return this.node!.attrs.display;
+      return this.node?.attrs.display;
     },
 
     imageViewClass() {
@@ -224,7 +224,9 @@ export default defineComponent({
       e.stopPropagation();
       if (!this.resizing) return;
 
-      const { x, y, w, h, dir } = this.resizerState;
+      const {
+        x, y, w, h, dir,
+      } = this.resizerState;
 
       const dx = (e.clientX - x) * (/l/.test(dir) ? -1 : 1);
       const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1);

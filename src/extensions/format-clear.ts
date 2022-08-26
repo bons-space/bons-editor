@@ -30,13 +30,12 @@ const FormatClear = Extension.create({
 
     return {
       formatClear:
-        () =>
-        ({ editor }) => {
+        () => ({ editor }) => {
           const chainedCommand: ChainedCommands = Object.entries(
-            commandsMap
+            commandsMap,
           ).reduce<ChainedCommands>((chain, [name, command]) => {
             const extension = editor.extensionManager.extensions.find(
-              (e) => e.name === name
+              (e) => e.name === name,
             );
             if (extension) {
               return chain[command]();

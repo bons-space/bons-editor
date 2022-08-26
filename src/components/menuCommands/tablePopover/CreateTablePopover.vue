@@ -45,7 +45,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, unref } from 'vue';
+import {
+  defineComponent, inject, ref, unref,
+} from 'vue';
 import { ElPopover } from 'element-plus';
 
 const INIT_GRID_SIZE = 5;
@@ -76,7 +78,9 @@ export default defineComponent({
       emit('createTable', { row, col });
     };
 
-    return { t, popoverVisible, popoverRef, confirmCreateTable };
+    return {
+      t, popoverVisible, popoverRef, confirmCreateTable,
+    };
   },
 
   data() {

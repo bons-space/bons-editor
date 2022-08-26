@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import {NodeViewContent, nodeViewProps, NodeViewWrapper} from '@tiptap/vue-3'
-import {ElSelect, ElOption, ElMessage} from 'element-plus'
-import {defineComponent, nextTick, onMounted} from "vue";
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
+import { ElSelect, ElOption, ElMessage } from 'element-plus'
+import { defineComponent, nextTick, onMounted } from 'vue';
 import VIcon from '@/components/Icon/Icon.vue'
 import copyToClipboard from '@/utils/copyToClipboard'
 
@@ -37,7 +37,7 @@ export default defineComponent({
     NodeViewContent,
     ElSelect,
     ElOption,
-    VIcon
+    VIcon,
   },
   props: nodeViewProps,
   data() {
@@ -51,7 +51,7 @@ export default defineComponent({
         return this.node.attrs.language
       },
       set(language) {
-        this.updateAttributes({language})
+        this.updateAttributes({ language })
       },
     },
   },
@@ -62,16 +62,16 @@ export default defineComponent({
       })
     }
   },
-  methods:{
-    handleCopyClick(){
-      if(!this.node.firstChild.text){
+  methods: {
+    handleCopyClick() {
+      if (!this.node.firstChild.text) {
         ElMessage.error('代码块内容为空')
         return
       }
       copyToClipboard(this.node.firstChild.text)
       ElMessage.success('复制成功')
-    }
-  }
+    },
+  },
 })
 </script>
 

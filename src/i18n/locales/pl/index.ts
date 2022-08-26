@@ -18,7 +18,7 @@ export default {
         buttons: {
           paragraph: 'Paragraf',
           heading: 'Nagłówek',
-        }
+        },
       },
       Blockquote: {
         tooltip: 'Cytat',

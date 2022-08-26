@@ -67,7 +67,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref, unref, watch } from 'vue';
+import {
+  computed, defineComponent, inject, ref, unref, watch,
+} from 'vue';
 import { Editor, getMarkAttributes } from '@tiptap/vue-3';
 import { ElButton, ElPopover, ElInput } from 'element-plus';
 import CommandButton from './CommandButton.vue';
@@ -107,9 +109,7 @@ export default defineComponent({
       unref(popoverRef).hide();
     }
 
-    const selectedColor = computed<string>(() => {
-      return getMarkAttributes(props.editor.state, 'textStyle').color || '';
-    });
+    const selectedColor = computed<string>(() => getMarkAttributes(props.editor.state, 'textStyle').color || '');
 
     watch(selectedColor, (color) => {
       colorText.value = color;
@@ -129,7 +129,7 @@ export default defineComponent({
   computed: {
     colorSet(): string[] {
       const colorOptions = this.editor.extensionManager.extensions.find(
-        (e) => e.name === 'color'
+        (e) => e.name === 'color',
       )!.options;
       return colorOptions.colors;
     },

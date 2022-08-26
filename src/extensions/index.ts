@@ -15,6 +15,7 @@ export { default as Iframe } from './iframe';
 
 // marks
 export { default as Code } from '@tiptap/extension-code';
+export { default as TextStyle } from '@tiptap/extension-text-style';
 export { default as Bold } from './bold';
 export { default as Underline } from './underline';
 export { default as Italic } from './italic';

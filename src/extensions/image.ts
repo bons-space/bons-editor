@@ -26,36 +26,29 @@ const Image = TiptapImage.extend({
       width: {
         default: DEFAULT_IMAGE_WIDTH,
         parseHTML: (element) => {
-          const width =
-            element.style.width || element.getAttribute('width') || null;
+          const width = element.style.width || element.getAttribute('width') || null;
           return width == null ? null : parseInt(width, 10);
         },
-        renderHTML: (attributes) => {
-          return {
-            width: attributes.width,
-          };
-        },
+        renderHTML: (attributes) => ({
+          width: attributes.width,
+        }),
       },
       height: {
         default: null,
         parseHTML: (element) => {
-          const height =
-            element.style.height || element.getAttribute('height') || null;
+          const height = element.style.height || element.getAttribute('height') || null;
           return height == null ? null : parseInt(height, 10);
         },
-        renderHTML: (attributes) => {
-          return {
-            height: attributes.height,
-          };
-        },
+        renderHTML: (attributes) => ({
+          height: attributes.height,
+        }),
       },
       display: {
         default: DEFAULT_IMAGE_DISPLAY,
         parseHTML: (element) => {
           const { cssFloat, display } = element.style;
-          let dp =
-            element.getAttribute('data-display') ||
-            element.getAttribute('display');
+          let dp = element.getAttribute('data-display')
+            || element.getAttribute('display');
           if (dp) {
             dp = /(inline|block|left|right)/.test(dp)
               ? dp
@@ -72,11 +65,9 @@ const Image = TiptapImage.extend({
 
           return dp;
         },
-        renderHTML: (attributes) => {
-          return {
-            ['data-display']: attributes.display,
-          };
-        },
+        renderHTML: (attributes) => ({
+          'data-display': attributes.display,
+        }),
       },
     };
   },

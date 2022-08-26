@@ -8,6 +8,7 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
+    'airbnb-base',
   ],
   parser: 'vue-eslint-parser',
   plugins: [
@@ -42,6 +43,7 @@ module.exports = {
     'no-mixed-operators': 0,
     'import/extensions': 0,
     'import/no-unresolved': 0,
+    'implicit-arrow-linebreak': 0,
     'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 0,
     'vue/no-v-html': 0,

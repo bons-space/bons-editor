@@ -15,7 +15,7 @@ function updateIndentLevel(
   tr: Transaction,
   delta: number,
   types: string[],
-  editor: Editor
+  editor: Editor,
 ): Transaction {
   const { doc, selection } = tr;
 
@@ -35,7 +35,7 @@ function updateIndentLevel(
     if (types.includes(nodeType.name)) {
       tr = setNodeIndentMarkup(tr, pos, delta);
       return false;
-    } else if (isList(node.type.name, editor.extensionManager.extensions)) {
+    } if (isList(node.type.name, editor.extensionManager.extensions)) {
       return false;
     }
     return true;
@@ -47,7 +47,7 @@ function updateIndentLevel(
 function setNodeIndentMarkup(
   tr: Transaction,
   pos: number,
-  delta: number
+  delta: number,
 ): Transaction {
   if (!tr.doc) return tr;
 

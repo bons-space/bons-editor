@@ -17,5 +17,5 @@ export const DEFAULT_FONT_FAMILY_MAP = DEFAULT_FONT_FAMILY_NAMES.reduce(
     obj[type] = type;
     return obj;
   },
-  {}
+  {},
 );

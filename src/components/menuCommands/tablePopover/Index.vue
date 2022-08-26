@@ -118,7 +118,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, unref } from 'vue';
+import {
+  defineComponent, inject, ref, unref,
+} from 'vue';
 import { Editor } from '@tiptap/vue-3';
 import { ElPopover } from 'element-plus';
 import {
@@ -156,7 +158,9 @@ export default defineComponent({
       unref(popoverRef).hide();
     };
 
-    return { t, enableTooltip, isCodeViewMode, popoverRef, hidePopover };
+    return {
+      t, enableTooltip, isCodeViewMode, popoverRef, hidePopover,
+    };
   },
 
   computed: {

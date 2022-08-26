@@ -18,7 +18,7 @@ export default {
         buttons: {
           paragraph: '正文',
           heading: '标题',
-        }
+        },
       },
       Blockquote: {
         tooltip: '引用',

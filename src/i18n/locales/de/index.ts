@@ -18,7 +18,7 @@ export default {
         buttons: {
           paragraph: 'Absatz',
           heading: 'Überschrift',
-        }
+        },
       },
       Blockquote: {
         tooltip: 'Zitat',

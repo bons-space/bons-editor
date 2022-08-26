@@ -18,7 +18,7 @@ export default {
         buttons: {
           paragraph: 'Paragraaf',
           heading: 'Hoofdstuk',
-        }
+        },
       },
       Blockquote: {
         tooltip: 'Citaat blokkeren',

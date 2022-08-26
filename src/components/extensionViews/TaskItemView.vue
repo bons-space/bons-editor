@@ -14,33 +14,21 @@
   </node-view-wrapper>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { computed, defineProps } from 'vue';
 import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
 import { ElCheckbox } from 'element-plus';
 
-export default defineComponent({
-  name: 'TaskItemView',
-
-  components: {
-    NodeViewWrapper,
-    NodeViewContent,
-    ElCheckbox,
+const props = defineProps(nodeViewProps)
+const done = computed({
+  get(): boolean {
+    return props.node?.attrs.done;
   },
-
-  props: nodeViewProps,
-
-  computed: {
-    done: {
-      get(): boolean {
-        return this.node?.attrs.done;
-      },
-      set(done: boolean) {
-        this.updateAttributes?.({
-          done,
-        });
-      },
-    },
+  set(done: boolean) {
+    props.updateAttributes?.({
+      done,
+    });
   },
-});
+})
+
 </script>

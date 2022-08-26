@@ -68,12 +68,12 @@ import {
   watchEffect,
   PropType,
 } from 'vue';
-import {Editor, Extensions} from '@tiptap/core';
-import {EditorContent, useEditor} from '@tiptap/vue-3';
+import { Editor, Extensions } from '@tiptap/core';
+import { EditorContent, useEditor } from '@tiptap/vue-3';
 import TiptapPlaceholder from '@tiptap/extension-placeholder';
 import CharacterCount from '@tiptap/extension-character-count';
-import {Trans} from '@/i18n';
-import {useCodeView, useCharacterCount, useEditorStyle} from '@/hooks';
+import { Trans } from '@/i18n';
+import { useCodeView, useCharacterCount, useEditorStyle } from '@/hooks';
 
 import MenuBar from './menuBar/Index.vue';
 // import MenuBubble from './menuBubble/Index.vue';
@@ -100,7 +100,6 @@ import zh from '@/i18n/locales/zh';
 //   editorBubbleMenuClass: string | string[] | Record<string, boolean>;
 //   editorFooterClass: string | string[] | Record<string, boolean>;
 // }
-
 
 const props = defineProps({
   content: {
@@ -180,37 +179,35 @@ const props = defineProps({
     type: [String, Array, Object],
     default: undefined,
   },
-},)
+})
 
 const emit = defineEmits([
-    'update:content',
+  'update:content',
   'onUpdate',
   'onCreate',
   'onTransaction',
   'onFocus',
   'onBlur',
-  'onDestroy'
+  'onDestroy',
 ])
 
 const extensions = props.extensions
-    .concat([
-      TiptapPlaceholder.configure({
-        emptyEditorClass: 'el-tiptap-editor--empty',
-        emptyNodeClass: 'el-tiptap-editor__placeholder',
-        showOnlyCurrent: false,
-        placeholder: () => {
-          return props.placeholder;
-        },
-      }),
-      props.enableCharCount
-          ? CharacterCount.configure({
-            limit: props.charCountMax,
-          })
-          : null,
-    ])
-    .filter(Boolean);
+  .concat([
+    TiptapPlaceholder.configure({
+      emptyEditorClass: 'el-tiptap-editor--empty',
+      emptyNodeClass: 'el-tiptap-editor__placeholder',
+      showOnlyCurrent: false,
+      placeholder: () => props.placeholder,
+    }),
+    props.enableCharCount
+      ? CharacterCount.configure({
+        limit: props.charCountMax,
+      })
+      : null,
+  ])
+  .filter(Boolean);
 
-const onUpdate = ({editor}: { editor: Editor }) => {
+const onUpdate = ({ editor }: { editor: Editor }) => {
   let output;
   if (props.output === 'html') {
     output = editor.getHTML();
@@ -257,9 +254,7 @@ watchEffect(() => {
 
 // i18n
 const i18nHandler = Trans.buildI18nHandler(toRaw(props.locale));
-const t = (...args: any[]): string => {
-  return i18nHandler.apply(Trans, args);
-};
+const t = (...args: any[]): string => i18nHandler.apply(Trans, args);
 
 const isFullscreen = ref(false);
 const toggleFullscreen = (val: boolean) => {
@@ -270,15 +265,13 @@ provide('toggleFullscreen', toggleFullscreen);
 
 provide('enableTooltip', props.tooltip);
 
-const {isCodeViewMode, cmTextAreaRef} = useCodeView(editor);
+const { isCodeViewMode, cmTextAreaRef } = useCodeView(editor);
 
 provide('isCodeViewMode', isCodeViewMode);
 
-const {characters} = useCharacterCount(editor);
+const { characters } = useCharacterCount(editor);
 
-const showFooter = computed(() => {
-  return props.enableCharCount && !unref(isCodeViewMode);
-});
+const showFooter = computed(() => props.enableCharCount && !unref(isCodeViewMode));
 
 const editorStyle = useEditorStyle({
   width: props.width,

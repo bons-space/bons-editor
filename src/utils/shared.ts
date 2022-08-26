@@ -22,7 +22,7 @@ export function readFileDataUrl(file: File): Promise<any> {
 
   return new Promise((resolve, reject) => {
     // @ts-ignore
-    reader.onload = readerEvent => resolve(readerEvent.target.result);
+    reader.onload = (readerEvent) => resolve(readerEvent.target.result);
     reader.onerror = reject;
 
     reader.readAsDataURL(file);
@@ -37,6 +37,7 @@ export function cached(fn: Function): Function {
 
   return function cachedFn(str: string): string {
     const hit = cache[str];
+    // eslint-disable-next-line no-return-assign
     return hit || (cache[str] = fn(str));
   };
 }
@@ -44,9 +45,7 @@ export function cached(fn: Function): Function {
 /**
  * Capitalize a string.
  */
-export const capitalize = cached((str: string): string => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-});
+export const capitalize = cached((str: string): string => str.charAt(0).toUpperCase() + str.slice(1));
 
 /**
  * Strict object type check. Only returns true

@@ -67,7 +67,7 @@ export default defineComponent({
   computed: {
     fontFamilies() {
       const fontFamilyOptions = this.editor.extensionManager.extensions.find(
-        (e) => e.name === 'fontFamily'
+        (e) => e.name === 'fontFamily',
       )!.options;
       return fontFamilyOptions.fontFamilyMap;
     },

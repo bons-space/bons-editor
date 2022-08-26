@@ -45,10 +45,10 @@ export default defineComponent({
           confirmButtonText: this.t('editor.extensions.Iframe.control.confirm'),
           cancelButtonText: this.t('editor.extensions.Iframe.control.cancel'),
           inputPlaceholder: this.t(
-            'editor.extensions.Iframe.control.placeholder'
+            'editor.extensions.Iframe.control.placeholder',
           ),
           roundButton: true,
-        }
+        },
       );
 
       this.editor.commands.setIframe({ src: href });

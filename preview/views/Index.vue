@@ -8,7 +8,15 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
+// TODO codemirror升级6版本
+import codemirror from 'codemirror';
+import 'codemirror/lib/codemirror.css'; // import base style
+import 'codemirror/mode/xml/xml.js'; // language
+import 'codemirror/addon/selection/active-line.js'; // require active-line.js
+import 'codemirror/addon/edit/closetag.js';
+// load all highlight.js languages
+import { lowlight } from 'lowlight'
 import {
   Editor,
   Document,
@@ -35,17 +43,8 @@ import {
   FormatClear,
   Fullscreen, SelectAll, CodeBlock, BulletList, OrderedList, Image, TaskList,
   Table,
-  Iframe, Gapcursor,
+  Iframe, Gapcursor, TextStyle,
 } from '../../src/index'
-
-// TODO codemirror升级6版本
-import codemirror from 'codemirror';
-import 'codemirror/lib/codemirror.css'; // import base style
-import 'codemirror/mode/xml/xml.js'; // language
-import 'codemirror/addon/selection/active-line.js'; // require active-line.js
-import 'codemirror/addon/edit/closetag.js';
-// load all highlight.js languages
-import {lowlight} from 'lowlight'
 
 const content = ref(` <p>
           Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.
@@ -67,14 +66,14 @@ const content = ref(` <p>
       \``)
 
 const extensions = [
-  Document, Text, Paragraph, Heading, Bold, Underline, Italic, Strike, Link, History,
+  Document, Text, Paragraph, Heading, Bold, Underline, Italic, Strike, Link, History, TextStyle,
   Color, FontFamily, FontSize, Highlight, Code, HardBreak, HorizontalRule, TextAlign, Indent,
-  LineHeight, FormatClear, Fullscreen, SelectAll,  BulletList, OrderedList, Image,
+  LineHeight, FormatClear, Fullscreen, SelectAll, BulletList, OrderedList, Image,
   TaskList,
   Gapcursor,
   Table.configure({ resizable: true }),
   Iframe,
-  CodeBlock.configure({  languageClassPrefix: 'language-',defaultLanguage: 'plaintext',lowlight }),
+  CodeBlock.configure({ languageClassPrefix: 'language-', defaultLanguage: 'plaintext', lowlight }),
   CodeView.configure({
     codemirror,
     codemirrorOptions: {

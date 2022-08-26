@@ -11,8 +11,8 @@ export function isTableActive(state: EditorState): boolean {
   doc.nodesBetween(from, to, (node) => {
     const name = node.type.name;
     if (
-      keepLooking &&
-      (name === 'table' || name === 'table_row' || name === 'table_column' || name === 'table_cell')
+      keepLooking
+      && (name === 'table' || name === 'table_row' || name === 'table_column' || name === 'table_cell')
     ) {
       keepLooking = false;
       active = true;
@@ -25,10 +25,10 @@ export function isTableActive(state: EditorState): boolean {
 // TODO 合并单元格状态
 export function enableMergeCells(state: EditorState): boolean {
   return isTableActive(state)
-      // && mergeCells(state);
+  // && mergeCells(state);
 }
 
 export function enableSplitCell(state: EditorState): boolean {
   return isTableActive(state)
-      // && splitCell(state);
+  // && splitCell(state);
 }

@@ -109,7 +109,7 @@ export default defineComponent({
   computed: {
     imageNodeOptions() {
       return this.editor.extensionManager.extensions.find(
-        (e) => e.name === 'image'
+        (e) => e.name === 'image',
       )!.options;
     },
   },
@@ -121,20 +121,20 @@ export default defineComponent({
         this.t('editor.extensions.Image.control.insert_by_url.title'),
         {
           confirmButtonText: this.t(
-            'editor.extensions.Image.control.insert_by_url.confirm'
+            'editor.extensions.Image.control.insert_by_url.confirm',
           ),
           cancelButtonText: this.t(
-            'editor.extensions.Image.control.insert_by_url.cancel'
+            'editor.extensions.Image.control.insert_by_url.cancel',
           ),
           inputPlaceholder: this.t(
-            'editor.extensions.Image.control.insert_by_url.placeholder'
+            'editor.extensions.Image.control.insert_by_url.placeholder',
           ),
           inputPattern: this.imageNodeOptions.urlPattern,
           inputErrorMessage: this.t(
-            'editor.extensions.Image.control.insert_by_url.invalid_url'
+            'editor.extensions.Image.control.insert_by_url.invalid_url',
           ),
           roundButton: true,
-        }
+        },
       )
         .then(({ value: url }) => {
           this.editor.commands.setImage({ src: url });

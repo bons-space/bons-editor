@@ -73,13 +73,15 @@ export default defineComponent({
     const enableTooltip = inject('enableTooltip', true);
     const isCodeViewMode = inject('isCodeViewMode', false);
 
-    return { t, enableTooltip, isCodeViewMode, defaultSize: DEFAULT_FONT_SIZE };
+    return {
+      t, enableTooltip, isCodeViewMode, defaultSize: DEFAULT_FONT_SIZE,
+    };
   },
 
   computed: {
     fontSizes(): string[] {
       const fontSizeOptions = this.editor.extensionManager.extensions.find(
-        (e) => e.name === 'fontSize'
+        (e) => e.name === 'fontSize',
       )!.options;
       return fontSizeOptions.fontSizes;
     },

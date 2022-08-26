@@ -11,35 +11,22 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { Editor } from '@tiptap/vue-3';
-import { defineComponent } from 'vue';
+import { computed, defineProps } from 'vue';
 import OpenLinkCommandButton from '@/components/menuCommands/link/OpenLinkCommandButton.vue';
 import EditLinkCommandButton from '@/components/menuCommands/link/EditLinkCommandButton.vue';
 import UnlinkCommandButton from '@/components/menuCommands/link/UnlinkCommandButton.vue';
 
-export default defineComponent({
-  name: 'LinkBubbleMenu',
-
-  components: {
-    OpenLinkCommandButton,
-    EditLinkCommandButton,
-    UnlinkCommandButton,
+const props = defineProps({
+  editor: {
+    type: Editor,
+    required: true,
   },
+})
 
-  props: {
-    editor: {
-      type: Editor,
-      required: true,
-    },
-  },
+const linkAttrs = computed(() => props.editor.getAttributes('link'))
 
-  computed: {
-    linkAttrs() {
-      return this.editor.getAttributes('link');
-    },
-  },
-});
 </script>
 
 <style lang="scss">

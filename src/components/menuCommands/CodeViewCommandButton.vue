@@ -27,7 +27,9 @@ export default defineComponent({
     const isCodeViewMode = inject('isCodeViewMode', false);
     const toggleIsCodeViewMode = inject('toggleIsCodeViewMode');
 
-    return { t, enableTooltip, isCodeViewMode, toggleIsCodeViewMode };
+    return {
+      t, enableTooltip, isCodeViewMode, toggleIsCodeViewMode,
+    };
   },
 });
 </script>

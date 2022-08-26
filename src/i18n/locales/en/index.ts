@@ -18,7 +18,7 @@ export default {
         buttons: {
           paragraph: 'Paragraph',
           heading: 'Heading',
-        }
+        },
       },
       Blockquote: {
         tooltip: 'Block quote',

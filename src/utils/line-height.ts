@@ -5,8 +5,8 @@ import {
   Transaction,
 } from 'prosemirror-state';
 import { Node as ProsemirrorNode, NodeType } from 'prosemirror-model';
-import { LINE_HEIGHT_100, DEFAULT_LINE_HEIGHT } from '@/constants';
 import type { Command } from '@tiptap/core';
+import { LINE_HEIGHT_100, DEFAULT_LINE_HEIGHT } from '@/constants';
 
 export const ALLOWED_NODE_TYPES = [
   'paragraph',
@@ -19,7 +19,7 @@ const NUMBER_VALUE_PATTERN = /^\d+(.\d+)?$/;
 
 export function isLineHeightActive(
   state: EditorState,
-  lineHeight: string
+  lineHeight: string,
 ): boolean {
   const { selection, doc } = state;
   const { from, to } = selection;
@@ -53,10 +53,10 @@ export function transformLineHeightToCSS(value: string | number): string {
 
   if (NUMBER_VALUE_PATTERN.test(strValue)) {
     const numValue = parseFloat(strValue);
-    strValue = String(Math.round(numValue * 100)) + '%';
+    strValue = `${String(Math.round(numValue * 100))}%`;
   }
 
-  return parseFloat(strValue) * LINE_HEIGHT_100 + '%';
+  return `${parseFloat(strValue) * LINE_HEIGHT_100}%`;
 }
 
 export function transformCSStoLineHeight(value: string): string {
@@ -67,11 +67,11 @@ export function transformCSStoLineHeight(value: string): string {
 
   if (NUMBER_VALUE_PATTERN.test(value)) {
     const numValue = parseFloat(value);
-    strValue = String(Math.round(numValue * 100)) + '%';
+    strValue = `${String(Math.round(numValue * 100))}%`;
     if (strValue === DEFAULT_LINE_HEIGHT) return '';
   }
 
-  return parseFloat(strValue) / LINE_HEIGHT_100 + '%';
+  return `${parseFloat(strValue) / LINE_HEIGHT_100}%`;
 }
 
 interface SetLineHeightTask {
@@ -82,7 +82,7 @@ interface SetLineHeightTask {
 
 export function setTextLineHeight(
   tr: Transaction,
-  lineHeight: string | null
+  lineHeight: string | null,
 ): Transaction {
   const { selection, doc } = tr;
 
@@ -97,8 +97,7 @@ export function setTextLineHeight(
   const { from, to } = selection;
 
   const tasks: Array<SetLineHeightTask> = [];
-  const lineHeightValue =
-    lineHeight && lineHeight !== DEFAULT_LINE_HEIGHT ? lineHeight : null;
+  const lineHeightValue = lineHeight && lineHeight !== DEFAULT_LINE_HEIGHT ? lineHeight : null;
 
   doc.nodesBetween(from, to, (node, pos) => {
     const nodeType = node.type;

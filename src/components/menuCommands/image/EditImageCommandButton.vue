@@ -117,8 +117,8 @@ export default defineComponent({
   },
 
   props: {
-    node: nodeViewProps['node'],
-    updateAttrs: nodeViewProps['updateAttributes'],
+    node: nodeViewProps.node,
+    updateAttrs: nodeViewProps.updateAttributes,
   },
 
   setup() {

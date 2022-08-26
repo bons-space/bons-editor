@@ -35,7 +35,7 @@ const Link = TiptapLink.extend({
             const $end = doc.resolve(range.to);
 
             const transaction = tr.setSelection(
-              new TextSelection($start, $end)
+              new TextSelection($start, $end),
             );
 
             view.dispatch(transaction);

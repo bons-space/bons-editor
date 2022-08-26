@@ -7,21 +7,16 @@
   />
 </template>
 
-
-
 <script lang="ts" setup>
-import {defineAsyncComponent, computed, defineProps} from 'vue';
+import { defineAsyncComponent, computed, defineProps } from 'vue';
 
 const props = defineProps({
-    name:{
-      type: String,
-      default: ''
-    }
+  name: {
+    type: String,
+    default: '',
+  },
 })
 
-const icon = computed(() => {
-  // @ts-ignore
-  return defineAsyncComponent(() => import(`../../icons/${props.name}.svg`))
-})
+const icon = computed(() => defineAsyncComponent(() => import(`../../icons/${props.name}.svg`)))
 
 </script>

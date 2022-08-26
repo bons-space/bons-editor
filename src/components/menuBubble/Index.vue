@@ -102,9 +102,7 @@ export default defineComponent({
 
     textMenuEnable(): boolean {
       const extensionManager = this.editor.extensionManager;
-      return extensionManager.extensions.some((extension) => {
-        return extension.options.bubble;
-      });
+      return extensionManager.extensions.some((extension) => extension.options.bubble);
     },
 
     isLinkSelection(): boolean {
@@ -175,8 +173,8 @@ export default defineComponent({
     $_getCurrentMenuType(): MenuType {
       if (this.isLinkSelection) return MenuType.LINK;
       if (
-        this.editor.state.selection instanceof TextSelection ||
-        this.editor.state.selection instanceof AllSelection
+        this.editor.state.selection instanceof TextSelection
+        || this.editor.state.selection instanceof AllSelection
       ) {
         return MenuType.DEFAULT;
       }

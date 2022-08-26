@@ -67,7 +67,7 @@ export default defineComponent({
   computed: {
     lineHeights() {
       const lineHeightOptions = this.editor.extensionManager.extensions.find(
-        (e) => e.name === 'lineHeight'
+        (e) => e.name === 'lineHeight',
       )?.options;
       return lineHeightOptions.lineHeights;
     },
