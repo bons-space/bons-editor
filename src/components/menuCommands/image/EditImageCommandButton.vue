@@ -13,7 +13,6 @@
       :append-to-body="true"
       width="400px"
       custom-class="el-tiptap-edit-image-dialog"
-      @open="syncImageAttrs"
     >
       <el-form
         :model="imageAttrs"
@@ -24,9 +23,9 @@
           :label="t('editor.extensions.Image.control.edit_image.form.src')"
         >
           <el-input
-            :value="imageAttrs.src"
+            v-model="imageAttrs.src"
             autocomplete="off"
-            disabled
+            aria-readonly="true"
           />
         </el-form-item>
 
@@ -92,8 +91,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject } from 'vue';
+<script lang="ts" setup>
+import { inject, reactive, ref } from 'vue';
 import { nodeViewProps } from '@tiptap/vue-3';
 import {
   ElDialog,
@@ -105,74 +104,44 @@ import {
 } from 'element-plus';
 import CommandButton from '../CommandButton.vue';
 
-export default defineComponent({
-  components: {
-    ElDialog,
-    ElForm,
-    ElFormItem,
-    ElInput,
-    ElCol,
-    ElButton,
-    CommandButton,
-  },
+const props = defineProps({
+  node: nodeViewProps.node,
+  updateAttrs: nodeViewProps.updateAttributes,
+})
 
-  props: {
-    node: nodeViewProps.node,
-    updateAttrs: nodeViewProps.updateAttributes,
-  },
+const t = inject('t');
+const enableTooltip = inject('enableTooltip', true);
 
-  setup() {
-    const t = inject('t');
-    const enableTooltip = inject('enableTooltip', true);
+const editImageDialogVisible = ref(false)
 
-    return { t, enableTooltip };
-  },
+const imageAttrs = reactive({
+  src: props.node?.attrs.src || '',
+  alt: props.node?.attrs.alt || '',
+  width: props.node?.attrs.width,
+  height: props.node?.attrs.height,
+})
 
-  data() {
-    return {
-      editImageDialogVisible: false,
+const updateImageAttrs = () => {
+  let { width, height } = imageAttrs;
 
-      imageAttrs: this.getImageAttrs(),
-    };
-  },
+  // input converts it to string
+  width = parseInt(width as string, 10);
+  height = parseInt(height as string, 10);
 
-  methods: {
-    syncImageAttrs() {
-      this.imageAttrs = this.getImageAttrs();
-    },
+  props.updateAttrs?.({
+    alt: imageAttrs.alt,
+    width: width >= 0 ? width : null,
+    height: height >= 0 ? height : null,
+  });
 
-    getImageAttrs() {
-      return {
-        src: this.node?.attrs.src,
-        alt: this.node?.attrs.alt,
-        width: this.node?.attrs.width,
-        height: this.node?.attrs.height,
-      };
-    },
+  closeEditImageDialog();
+}
 
-    updateImageAttrs() {
-      let { width, height } = this.imageAttrs;
+const openEditImageDialog = () => {
+  editImageDialogVisible.value = true;
+}
 
-      // input converts it to string
-      width = parseInt(width as string, 10);
-      height = parseInt(height as string, 10);
-
-      this.updateAttrs?.({
-        alt: this.imageAttrs.alt,
-        width: width >= 0 ? width : null,
-        height: height >= 0 ? height : null,
-      });
-
-      this.closeEditImageDialog();
-    },
-
-    openEditImageDialog() {
-      this.editImageDialogVisible = true;
-    },
-
-    closeEditImageDialog() {
-      this.editImageDialogVisible = false;
-    },
-  },
-});
+const closeEditImageDialog = () => {
+  editImageDialogVisible.value = false;
+}
 </script>

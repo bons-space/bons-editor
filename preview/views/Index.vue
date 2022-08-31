@@ -22,6 +22,7 @@ import {
   Document,
   Text,
   Paragraph,
+  Blockquote,
   Code,
   HardBreak,
   Heading,
@@ -66,7 +67,7 @@ const content = ref(` <p>
       \``)
 
 const extensions = [
-  Document, Text, Paragraph, Heading, Bold, Underline, Italic, Strike, Link, History, TextStyle,
+  Document, Text, Paragraph, Heading, Blockquote, Bold, Underline, Italic, Strike, Link, History, TextStyle,
   Color, FontFamily, FontSize, Highlight, Code, HardBreak, HorizontalRule, TextAlign, Indent,
   LineHeight, FormatClear, Fullscreen, SelectAll, BulletList, OrderedList, Image,
   TaskList,

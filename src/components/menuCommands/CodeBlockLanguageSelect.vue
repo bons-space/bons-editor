@@ -3,7 +3,7 @@
     <el-select
       v-model="selectedLanguage"
       placeholder="Select"
-      class="language-select"
+      class="lang-select"
       contenteditable="false"
       filterable
       size="small"
@@ -87,13 +87,15 @@ export default defineComponent({
     top: 0.5rem;
     right: 0.5rem;
     cursor: pointer;
+    z-index: 9;
   }
 
-  .language-select {
+  .lang-select {
     position: absolute;
     top: 0.5rem;
     right: 2rem;
     width: 80px;
+    z-index: 9;
 
     :deep(.el-input__suffix) {
       display: none;
