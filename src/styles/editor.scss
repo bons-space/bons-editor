@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.el-tiptap-editor {
+.bons-editor {
   $root: &;
 
   box-sizing: border-box;
@@ -12,7 +12,7 @@
   width: 100%;
   max-width: 1200px;
 
-  *[class^='el-tiptap-editor'] {
+  *[class^='bons-editor'] {
     box-sizing: border-box;
   }
 
@@ -510,7 +510,7 @@
   }
 
   &__placeholder {
-    &.el-tiptap-editor--empty:first-child::before {
+    &.bons-editor--empty:first-child::before {
       color: $placeholder-text-color;
       content: attr(data-placeholder);
       float: left;

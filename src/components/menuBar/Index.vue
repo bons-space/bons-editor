@@ -1,5 +1,5 @@
 <template>
-  <div class="el-tiptap-editor__menu-bar">
+  <div class="bons-editor__menu-bar">
     <component
       :is="spec.component"
       v-for="(spec, i) in generateCommandButtonComponentSpecs()"
@@ -35,7 +35,7 @@ const generateCommandButtonComponentSpecs = () => {
 
     const menuBtnComponentSpec = button({
       editor: props.editor,
-      t: t.value,
+      t,
       extension,
     });
 

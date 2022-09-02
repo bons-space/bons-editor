@@ -5,9 +5,9 @@
   >
     <div
       :class="{
-        'el-tiptap-editor__menu-bubble--active': bubbleMenuEnable,
+        'bons-editor__menu-bubble--active': bubbleMenuEnable,
       }"
-      class="el-tiptap-editor__menu-bubble"
+      class="bons-editor__menu-bubble"
     >
       <link-bubble-menu
         v-if="activeMenu === 'link'"
@@ -16,7 +16,7 @@
         <template #prepend>
           <div
             v-if="textMenuEnable"
-            class="el-tiptap-editor__command-button"
+            class="bons-editor__command-button"
             @mousedown.prevent
             @click="linkBack"
           >

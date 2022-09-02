@@ -4,9 +4,9 @@
     :style="editorStyle"
     :class="[
       {
-        'el-tiptap-editor': true,
-        'el-tiptap-editor--fullscreen': isFullscreen,
-        'el-tiptap-editor--with-footer': showFooter,
+        'bons-editor': true,
+        'bons-editor--fullscreen': isFullscreen,
+        'bons-editor--with-footer': showFooter,
       },
       editorClass,
     ]"
@@ -24,7 +24,7 @@
     <div
       v-if="isCodeViewMode"
       :class="{
-        'el-tiptap-editor__codemirror': true,
+        'bons-editor__codemirror': true,
         'border-bottom-radius': isCodeViewMode,
       }"
     >
@@ -36,7 +36,7 @@
       :editor="editor"
       :class="[
         {
-          'el-tiptap-editor__content': true,
+          'bons-editor__content': true,
         },
         editorContentClass,
       ]"
@@ -46,12 +46,12 @@
       v-if="showFooter"
       :class="[
         {
-          'el-tiptap-editor__footer': true,
+          'bons-editor__footer': true,
         },
         editorFooterClass,
       ]"
     >
-      <span class="el-tiptap-editor__characters">
+      <span class="bons-editor__characters">
         {{ t('editor.characters') }}: {{ characters }}
       </span>
     </div>
@@ -194,8 +194,8 @@ const emit = defineEmits([
 const extensions = props.extensions
   .concat([
     TiptapPlaceholder.configure({
-      emptyEditorClass: 'el-tiptap-editor--empty',
-      emptyNodeClass: 'el-tiptap-editor__placeholder',
+      emptyEditorClass: 'bons-editor--empty',
+      emptyNodeClass: 'bons-editor__placeholder',
       showOnlyCurrent: false,
       placeholder: () => props.placeholder,
     }),
@@ -203,7 +203,7 @@ const extensions = props.extensions
       ? CharacterCount.configure({
         limit: props.charCountMax,
       })
-      : null,
+      : null as any,
   ])
   .filter(Boolean);
 

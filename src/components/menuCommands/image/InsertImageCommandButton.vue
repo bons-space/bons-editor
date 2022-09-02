@@ -1,63 +1,64 @@
 <template>
-  <el-popover
-    :disabled="isCodeViewMode"
-    placement="bottom"
-    trigger="click"
-    popper-class="el-tiptap-popper"
-  >
-    <div class="el-tiptap-popper__menu">
-      <div
-        class="el-tiptap-popper__menu__item"
-        @click="openUrlPrompt"
-      >
-        <span>{{
-          t('editor.extensions.Image.buttons.insert_image.external')
-        }}</span>
-      </div>
-
-      <div
-        class="el-tiptap-popper__menu__item"
-        @click="imageUploadDialogVisible = true"
-      >
-        <span>{{
-          t('editor.extensions.Image.buttons.insert_image.upload')
-        }}</span>
-      </div>
-    </div>
-
-    <template #reference>
-      <span>
-        <command-button
-          :enable-tooltip="enableTooltip"
-          :tooltip="t('editor.extensions.Image.buttons.insert_image.tooltip')"
-          :readonly="isCodeViewMode"
-          icon="image"
-        />
-      </span>
-    </template>
-  </el-popover>
-
-  <el-dialog
-    v-model="imageUploadDialogVisible"
-    :title="t('editor.extensions.Image.control.upload_image.title')"
-    :append-to-body="true"
-  >
-    <el-upload
-      :http-request="uploadImage"
-      :show-file-list="false"
-      class="el-tiptap-upload"
-      action="#"
-      drag
-      accept="image/*"
+  <div>
+    <el-popover
+      :disabled="isCodeViewMode"
+      placement="bottom"
+      trigger="click"
+      popper-class="el-tiptap-popper"
     >
-      <div class="el-tiptap-upload__icon">
-        <i class="fa fa-upload" />
+      <div class="el-tiptap-popper__menu">
+        <div
+          class="el-tiptap-popper__menu__item"
+          @click="openUrlPrompt"
+        >
+          <span>{{
+            t('editor.extensions.Image.buttons.insert_image.external')
+          }}</span>
+        </div>
+
+        <div
+          class="el-tiptap-popper__menu__item"
+          @click="imageUploadDialogVisible = true"
+        >
+          <span>{{
+            t('editor.extensions.Image.buttons.insert_image.upload')
+          }}</span>
+        </div>
       </div>
-      <div class="el-tiptap-upload__text">
-        {{ t('editor.extensions.Image.control.upload_image.button') }}
-      </div>
-    </el-upload>
-  </el-dialog>
+
+      <template #reference>
+        <span>
+          <command-button
+            :enable-tooltip="enableTooltip"
+            :tooltip="t('editor.extensions.Image.buttons.insert_image.tooltip')"
+            :readonly="isCodeViewMode"
+            icon="image"
+          />
+        </span>
+      </template>
+    </el-popover>
+    <el-dialog
+      v-model="imageUploadDialogVisible"
+      :title="t('editor.extensions.Image.control.upload_image.title')"
+      :append-to-body="true"
+    >
+      <el-upload
+        :http-request="uploadImage"
+        :show-file-list="false"
+        class="el-tiptap-upload"
+        action="#"
+        drag
+        accept="image/*"
+      >
+        <div class="el-tiptap-upload__icon">
+          <i class="fa fa-upload" />
+        </div>
+        <div class="el-tiptap-upload__text">
+          {{ t('editor.extensions.Image.control.upload_image.button') }}
+        </div>
+      </el-upload>
+    </el-dialog>
+  </div>
 </template>
 
 <script lang="ts">
