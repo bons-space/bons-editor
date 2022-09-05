@@ -2,7 +2,7 @@
   <el-dropdown
     placement="bottom"
     trigger="click"
-    popper-class="el-tiptap-dropdown-popper"
+    popper-class="editor-dropdown-popper"
     @command="toggleHeading"
   >
     <command-button
@@ -13,7 +13,7 @@
       icon="heading"
     />
     <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
+      <el-dropdown-menu class="editor-dropdown-menu">
         <el-dropdown-item
           v-for="level in [0, ...levels]"
           :key="level"
@@ -22,14 +22,14 @@
           <div
             :class="[
               {
-                'el-tiptap-dropdown-menu__item--active':
+                'editor-dropdown-menu__item--active':
                   level > 0
                     ? editor.isActive('heading', {
                       level,
                     })
                     : editor.isActive('paragraph'),
               },
-              'el-tiptap-dropdown-menu__item',
+              'editor-dropdown-menu__item',
             ]"
           >
             <template v-if="level > 0">

@@ -4,11 +4,11 @@
       :disabled="isCodeViewMode"
       placement="bottom"
       trigger="click"
-      popper-class="el-tiptap-popper"
+      popper-class="editor-popper"
     >
-      <div class="el-tiptap-popper__menu">
+      <div class="editor-popper__menu">
         <div
-          class="el-tiptap-popper__menu__item"
+          class="editor-popper__menu__item"
           @click="openUrlPrompt"
         >
           <span>{{
@@ -17,7 +17,7 @@
         </div>
 
         <div
-          class="el-tiptap-popper__menu__item"
+          class="editor-popper__menu__item"
           @click="imageUploadDialogVisible = true"
         >
           <span>{{
@@ -45,15 +45,15 @@
       <el-upload
         :http-request="uploadImage"
         :show-file-list="false"
-        class="el-tiptap-upload"
+        class="editor-upload"
         action="#"
         drag
         accept="image/*"
       >
-        <div class="el-tiptap-upload__icon">
+        <div class="editor-upload__icon">
           <i class="fa fa-upload" />
         </div>
-        <div class="el-tiptap-upload__text">
+        <div class="editor-upload__text">
           {{ t('editor.extensions.Image.control.upload_image.button') }}
         </div>
       </el-upload>
@@ -151,7 +151,7 @@ export default defineComponent({
       const uploadRequest = this.imageNodeOptions.uploadRequest;
 
       const loadingInstance = ElLoading.service({
-        target: '.el-tiptap-upload',
+        target: '.editor-upload',
       });
       try {
         const url = await (uploadRequest

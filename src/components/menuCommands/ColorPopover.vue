@@ -4,7 +4,7 @@
     :disabled="isCodeViewMode"
     placement="bottom"
     trigger="click"
-    popper-class="el-tiptap-popper"
+    popper-class="editor-popper"
   >
     <div class="color-set">
       <div

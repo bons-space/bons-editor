@@ -4,18 +4,18 @@
     :disabled="isCodeViewMode"
     placement="bottom"
     trigger="click"
-    popper-class="el-tiptap-popper"
+    popper-class="editor-popper"
   >
-    <div class="el-tiptap-popper__menu">
-      <div class="el-tiptap-popper__menu__item">
+    <div class="editor-popper__menu">
+      <div class="editor-popper__menu__item">
         <create-table-popover @createTable="createTable" />
       </div>
 
-      <div class="el-tiptap-popper__menu__item__separator" />
+      <div class="editor-popper__menu__item__separator" />
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.addColumnBefore"
       >
@@ -25,8 +25,8 @@
       </div>
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.addColumnAfter"
       >
@@ -34,19 +34,19 @@
       </div>
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.deleteColumn"
       >
         <span>{{ t('editor.extensions.Table.buttons.delete_column') }}</span>
       </div>
 
-      <div class="el-tiptap-popper__menu__item__separator" />
+      <div class="editor-popper__menu__item__separator" />
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.addRowBefore"
       >
@@ -54,8 +54,8 @@
       </div>
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.addRowAfter"
       >
@@ -63,19 +63,19 @@
       </div>
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.deleteRow"
       >
         <span>{{ t('editor.extensions.Table.buttons.delete_row') }}</span>
       </div>
 
-      <div class="el-tiptap-popper__menu__item__separator" />
+      <div class="editor-popper__menu__item__separator" />
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !enableMergeCells }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !enableMergeCells }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.mergeCells"
       >
@@ -83,19 +83,19 @@
       </div>
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !enableSplitCell }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !enableSplitCell }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.splitCell"
       >
         <span>{{ t('editor.extensions.Table.buttons.split_cell') }}</span>
       </div>
 
-      <div class="el-tiptap-popper__menu__item__separator" />
+      <div class="editor-popper__menu__item__separator" />
 
       <div
-        :class="{ 'el-tiptap-popper__menu__item--disabled': !isTableActive }"
-        class="el-tiptap-popper__menu__item"
+        :class="{ 'editor-popper__menu__item--disabled': !isTableActive }"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="editor.commands.deleteTable"
       >

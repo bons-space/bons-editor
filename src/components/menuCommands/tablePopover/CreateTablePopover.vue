@@ -4,7 +4,7 @@
     v-model="popoverVisible"
     placement="right"
     trigger="hover"
-    popper-class="el-tiptap-popper"
+    popper-class="editor-popper"
     @after-leave="resetTableGridSize"
   >
     <div class="table-grid-size-editor">

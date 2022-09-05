@@ -13,17 +13,17 @@
     <template #dropdown>
       <el-dropdown-menu
         slot="dropdown"
-        class="el-tiptap-dropdown-menu"
+        class="editor-dropdown-menu"
       >
         <el-dropdown-item
           v-for="lineHeight in lineHeights"
           :key="lineHeight"
           :command="lineHeight"
           :class="{
-            'el-tiptap-dropdown-menu__item--active':
+            'editor-dropdown-menu__item--active':
               isLineHeightActive(lineHeight),
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="editor-dropdown-menu__item"
         >
           <span>{{ lineHeight }}</span>
         </el-dropdown-item>

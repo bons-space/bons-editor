@@ -12,15 +12,15 @@
     />
 
     <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
+      <el-dropdown-menu class="editor-dropdown-menu">
         <el-dropdown-item
           v-for="name in fontFamilies"
           :key="name"
           :command="name"
           :class="{
-            'el-tiptap-dropdown-menu__item--active': name === activeFontFamily,
+            'editor-dropdown-menu__item--active': name === activeFontFamily,
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="editor-dropdown-menu__item"
         >
           <span
             :data-font="name"

@@ -12,15 +12,15 @@
     />
 
     <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
+      <el-dropdown-menu class="editor-dropdown-menu">
         <!-- default size -->
         <el-dropdown-item
           :command="defaultSize"
           :class="{
-            'el-tiptap-dropdown-menu__item--active':
+            'editor-dropdown-menu__item--active':
               activeFontSize === defaultSize,
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="editor-dropdown-menu__item"
         >
           <span data-font-size="default">{{
             t('editor.extensions.FontSize.default')
@@ -32,10 +32,10 @@
           :key="fontSize"
           :command="fontSize"
           :class="{
-            'el-tiptap-dropdown-menu__item--active':
+            'editor-dropdown-menu__item--active':
               fontSize === activeFontSize,
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="editor-dropdown-menu__item"
         >
           <span :data-font-size="fontSize">{{ fontSize }}</span>
         </el-dropdown-item>

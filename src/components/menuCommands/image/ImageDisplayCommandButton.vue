@@ -3,16 +3,16 @@
     ref="popoverRef"
     placement="top"
     trigger="click"
-    popper-class="el-tiptap-popper"
+    popper-class="editor-popper"
   >
-    <div class="el-tiptap-popper__menu">
+    <div class="editor-popper__menu">
       <div
         v-for="display in displayCollection"
         :key="display"
         :class="{
-          'el-tiptap-popper__menu__item--active': display === currDisplay,
+          'editor-popper__menu__item--active': display === currDisplay,
         }"
-        class="el-tiptap-popper__menu__item"
+        class="editor-popper__menu__item"
         @mousedown="hidePopover"
         @click="updateAttrs!({ display })"
       >

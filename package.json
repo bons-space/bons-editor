@@ -52,8 +52,8 @@
     "@tiptap/extension-text-style": "^2.0.0-beta.26",
     "@tiptap/extension-underline": "^2.0.0-beta.25",
     "@tiptap/vue-3": "^2.0.0-beta.96",
-    "highlight.js": "^11.6.0",
     "codemirror": "^5.65.8",
+    "highlight.js": "^11.6.0",
     "lowlight": "^2.7.0"
   },
   "devDependencies": {

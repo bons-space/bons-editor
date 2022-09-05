@@ -39,13 +39,13 @@
   }
 }
 
-.el-tiptap-dropdown-popper {
+.editor-dropdown-popper {
   .el-dropdown-menu__item {
     padding: 0;
   }
 }
 
-.el-tiptap-dropdown-menu {
+.editor-dropdown-menu {
   $menu: &;
 
   #{$menu}__item {
@@ -66,7 +66,7 @@
   }
 }
 
-.el-tiptap-popper {
+.editor-popper {
   width: auto !important;
 
   &.el-popper {
@@ -106,7 +106,7 @@
   }
 }
 
-.el-tiptap-upload {
+.editor-upload {
   $root: &;
 
   display: flex;
@@ -255,7 +255,7 @@
   }
 }
 
-.el-tiptap-edit-image-dialog {
+.editor-edit-image-dialog {
   .el-form-item:last-child {
     margin-bottom: 0;
   }
@@ -266,13 +266,13 @@
   }
 }
 
-.el-tiptap-edit-link-dialog {
+.editor-edit-link-dialog {
   .el-form-item:last-child {
     margin-bottom: 0;
   }
 }
 
-.el-popper.el-tiptap-image-popper {
+.el-popper.editor-image-popper {
   background-color: $white-color;
   border-radius: 8px;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -284,5 +284,116 @@
     align-items: center;
     display: flex;
     flex-direction: row;
+  }
+}
+
+.editor-custom-block-popper{
+  background-color: $white-color;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.2),
+  0 2px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  min-width: 0;
+  padding: 5px;
+  width: auto !important;
+
+  .custom-block-bubble-menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    .custom-checkbox{
+      white-space: nowrap;
+      cursor: pointer;
+      outline: none;
+      display: inline-flex;
+      position: relative;
+
+      &+.custom-checkbox{
+        margin-left: 10px;
+      }
+
+      &__original{
+        opacity: 0;
+        outline: none;
+        position: absolute;
+        margin: 0;
+        width: 0;
+        height: 0;
+        z-index: -1;
+      }
+
+      &__inner{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+        border-radius: 4px;
+        border: 1px solid inherit;
+        transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46),outline .25s cubic-bezier(.71,-.46,.29,1.46);
+        box-sizing: border-box;
+        z-index: 1;
+
+        &:after{
+          box-sizing: content-box;
+          content: "";
+          border: 1px solid #000;
+          border-left: 0;
+          border-top: 0;
+          height: 10px;
+          left: 7px;
+          position: absolute;
+          top: 3px;
+          transform: rotate(45deg) scaleY(0);
+          width: 5px;
+          transition: transform 0.15s ease-in 0.05s;
+          transform-origin: center;
+        }
+      }
+    }
+
+    .checked{
+      .custom-checkbox__inner{
+        &:after{
+          transform: rotate(45deg) scaleY(1);
+        }
+      }
+    }
+
+    .tips{
+      background-color: rgba(244, 245, 245, 0.5);
+    }
+    .info{
+      background-color: rgba(217, 232, 252, 0.5);
+    }
+    .warning{
+      background-color: rgba(249, 239, 205, 0.5);
+    }
+    .success{
+      background-color: rgba(232, 247, 207, 0.5);
+    }
+
+    .danger {
+      background-color: rgba(251, 228, 231, 0.5);
+    }
+
+    .color1 {
+      background-color: rgba(206, 241, 247, 0.5);
+    }
+
+    .color2 {
+      background-color: rgba(218, 246, 234, 0.5);
+    }
+
+    .color3 {
+      background-color: rgba(253, 230, 211, 0.5);
+    }
+
+    .color4 {
+      background-color: rgba(251, 223, 239, 0.5);
+    }
+
+    .color5 {
+      background-color: rgba(230, 220, 249, 0.5);
+    }
   }
 }

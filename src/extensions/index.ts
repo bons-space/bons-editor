@@ -25,6 +25,7 @@ export { default as Color } from './color';
 export { default as Highlight } from './highlight';
 export { default as FontFamily } from './font-family';
 export { default as FontSize } from './font-size';
+export { default as CustomBlock } from './custom-block';
 
 // extensions
 export { default as HardBreak } from '@tiptap/extension-hard-break';

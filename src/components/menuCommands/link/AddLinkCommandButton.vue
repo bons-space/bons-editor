@@ -14,7 +14,7 @@
       :title="t('editor.extensions.Link.add.control.title')"
       :append-to-body="true"
       width="400px"
-      custom-class="el-tiptap-edit-link-dialog"
+      custom-class="editor-edit-link-dialog"
     >
       <el-form
         :model="linkAttrs"

@@ -41,7 +41,7 @@
         :visible="selected"
         :show-arrow="false"
         placement="top"
-        popper-class="el-tiptap-image-popper"
+        popper-class="editor-image-popper"
       >
         <image-bubble-menu
           :node="node"
