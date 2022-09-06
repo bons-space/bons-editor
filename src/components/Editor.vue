@@ -17,6 +17,7 @@
     <!--    />-->
 
     <menu-bar
+      v-if="!readonly"
       :editor="editor"
       :class="editorMenubarClass"
     />
@@ -78,28 +79,6 @@ import { useCodeView, useCharacterCount, useEditorStyle } from '@/hooks';
 import MenuBar from './menuBar/Index.vue';
 // import MenuBubble from './menuBubble/Index.vue';
 import zh from '@/i18n/locales/zh';
-
-// interface Props {
-//   extensions: Extensions;
-//   content?: string;
-//   placeholder?: string;
-//   lang?: string;
-//   width?: string | number;
-//   height?: string | number;
-//   output: 'html' | 'json';
-//   readonly?: boolean;
-//   tooltip?: boolean;
-//   enableCharCount?: boolean;
-//   charCountMax?: number;
-//   spellcheck?: boolean;
-//   locale: Object;
-//   // ----- Editor Class -----
-//   editorClass?: string | string[] | Record<string, boolean>;
-//   editorContentClass: string | string[] | Record<string, boolean>;
-//   editorMenubarClass: string | string[] | Record<string, boolean>;
-//   editorBubbleMenuClass: string | string[] | Record<string, boolean>;
-//   editorFooterClass: string | string[] | Record<string, boolean>;
-// }
 
 const props = defineProps({
   content: {

@@ -53,8 +53,8 @@
 <script lang="ts">
 import { defineComponent, inject } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
-import type { Level } from '@tiptap/extension-heading';
 import { Editor } from '@tiptap/core';
+import type { Level } from '@/extensions/heading';
 import CommandButton from './CommandButton.vue';
 
 export default defineComponent({

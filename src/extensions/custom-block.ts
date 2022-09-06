@@ -1,5 +1,5 @@
 import {
-  Editor, Node, mergeAttributes, nodeInputRule, nodePasteRule,
+  Editor, Node, mergeAttributes,
 } from '@tiptap/core';
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import CommandButton from '@/components/menuCommands/CommandButton.vue';
@@ -55,8 +55,9 @@ const CustomBlock = Node.create<CustomBlockOptions>({
     return {
       type: {
         default: 'tips',
-        parseHTML: (element) => element.getAttribute('type'),
+        parseHTML: (element) => element.getAttribute('custom-block-type'),
         renderHTML: (attributes) => ({
+          'custom-block-type': attributes.type,
           class: `custom-block ${attributes.type}`,
         }),
       },
@@ -84,11 +85,11 @@ const CustomBlock = Node.create<CustomBlockOptions>({
   },
   parseHTML() {
     return [
-      { tag: 'div' },
+      { tag: 'custom-block' },
     ]
   },
   renderHTML({ HTMLAttributes }) {
-    return ['div', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
+    return ['custom-block', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
   },
   // addInputRules() {
   //   return [

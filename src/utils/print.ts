@@ -35,8 +35,8 @@ function printHtml(dom: Element) {
           }
           frameWindow.close();
         }, 10);
-      } catch (err) {
-        Logger.error(err);
+      } catch (err:any) {
+        Logger.error(err.msg);
       }
 
       setTimeout(() => {
