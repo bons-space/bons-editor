@@ -44,10 +44,10 @@ import {
   FormatClear,
   Fullscreen, SelectAll, CodeBlock, BulletList, OrderedList, Image, TaskList,
   Table,
-  Iframe, Gapcursor, TextStyle, CustomBlock,
+  Iframe, Gapcursor, TextStyle, CustomBlock, PrismCodeBlock,
 } from '../../src/index'
 
-const content = ref('<div class="custom-block info"><pre><code class="language-javascript">console.log(12312321)</code></pre></div><p></p><p>大萨达</p><p></p><p>das的as</p><div class="custom-block info"><p>dsadsadsad</p></div><p></p>')
+const content = ref('')
 
 const extensions = [
   Document, Text, Paragraph, Heading, Blockquote, Bold, Underline, Italic, Strike, Link, History, TextStyle,
@@ -57,7 +57,8 @@ const extensions = [
   Gapcursor,
   Table.configure({ resizable: true }),
   Iframe,
-  CodeBlock.configure({ languageClassPrefix: 'language-', defaultLanguage: 'plaintext', lowlight }),
+  // CodeBlock.configure({ languageClassPrefix: 'language-', defaultLanguage: 'plaintext', lowlight }),
+  PrismCodeBlock.configure({ languageClassPrefix: 'language-', defaultLanguage: 'plaintext' }),
   CustomBlock,
   CodeView.configure({
     codemirror,

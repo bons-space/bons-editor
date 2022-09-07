@@ -4,7 +4,7 @@ import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import TiptapCodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 
 import CommandButton from '@/components/menuCommands/CommandButton.vue';
-import CodeBlockLanguageSelect from '@/components/menuCommands/CodeBlockLanguageSelect.vue'
+import CodeBlockLanguageSelect from '@/components/extensionViews/CodeBlockView.vue'
 
 // @ts-ignore
 const CodeBlock = TiptapCodeBlockLowlight.extend({

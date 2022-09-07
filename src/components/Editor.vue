@@ -264,5 +264,6 @@ provide('t', t);
 <style lang="scss">
 @import '../styles/editor.scss';
 @import '../styles/command-button.scss';
-@import "highlight.js/styles/atom-one-dark.css";
+//@import "highlight.js/styles/atom-one-dark.css";
+@import 'prism-themes/themes/prism-one-dark.css';
 </style>

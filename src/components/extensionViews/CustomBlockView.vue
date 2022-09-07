@@ -4,8 +4,8 @@
     class="custom-block"
     :class="node?.attrs.type"
   >
-    <!-- when image is break text or float bubble menu's position is miscalculated use el-popover instead bubble menu -->
     <el-popover
+      :disabled="!editor?.view.editable"
       placement="top"
       :show-arrow="false"
       trigger="hover"

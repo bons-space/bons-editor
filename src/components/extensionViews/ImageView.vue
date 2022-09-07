@@ -21,7 +21,7 @@
       >
 
       <div
-        v-if="editor?.isEditable"
+        v-if="editor.view.isEditable"
         v-show="selected || resizing"
         class="image-resizer"
       >
@@ -38,6 +38,7 @@
       bubble menu's position is miscalculated
       use el-popover instead bubble menu -->
       <el-popover
+        v-if="editor.view.isEditable"
         :visible="selected"
         :show-arrow="false"
         placement="top"

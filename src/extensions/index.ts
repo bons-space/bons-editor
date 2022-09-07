@@ -6,6 +6,7 @@ export { default as Document } from './document';
 export { default as Heading } from './heading';
 export { default as Blockquote } from './blockquote';
 export { default as CodeBlock } from './code-block';
+export { default as PrismCodeBlock } from './prism-code-block';
 export { default as BulletList } from './bullet-list';
 export { default as OrderedList } from './ordered-list';
 export { default as Image } from './image';
