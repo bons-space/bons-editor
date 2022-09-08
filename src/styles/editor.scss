@@ -273,7 +273,7 @@
 
     [class*='language-'] > span.lang {
       position: absolute;
-      top: 6px;
+      top: 10px;
       right: 12px;
       z-index: 2;
       font-size: 12px;
@@ -421,6 +421,16 @@
         margin-right: 0;
       }
 
+      &__body-editable{
+        &:hover {
+          outline-color: #ffc83d;
+        }
+
+        .image-view__body__image{
+          cursor: pointer;
+        }
+      }
+
       &__body {
         clear: both;
         display: inline-block;
@@ -450,7 +460,7 @@
         }
 
         &__image {
-          cursor: pointer;
+          cursor: zoom-in;
           margin: 0;
         }
       }

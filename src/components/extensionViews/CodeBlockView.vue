@@ -4,6 +4,7 @@
     :class="`language-${selectedLanguage}`"
   >
     <el-select
+      v-if="editor.isEditable"
       v-model="selectedLanguage"
       placeholder="Select"
       class="lang-select"
@@ -19,12 +20,19 @@
         :label="language"
       />
     </el-select>
-    <VIcon
-      name="copy"
-      class="copyBtn"
+    <button
+      v-if="!editor.isEditable"
+      class="copy"
       @click="handleCopyClick"
     />
-    <pre><code><node-view-content /></code></pre>
+    <span
+      v-if="!editor.isEditable"
+      class="lang"
+    >{{ selectedLanguage }}</span>
+    <pre><node-view-content
+          as="code"
+          style="white-space: inherit"
+    /></pre>
     <div
       class="line-numbers-wrapper"
       v-html="lineNumbersWrapper"

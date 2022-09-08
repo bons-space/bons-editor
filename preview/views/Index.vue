@@ -47,7 +47,23 @@ import {
   Iframe, Gapcursor, TextStyle, CustomBlock, PrismCodeBlock,
 } from '../../src/index'
 
-const content = ref('')
+const content = ref('<pre class="language-json v-pre><code><span class="token punctuation">{</span>\n'
+    + '    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"SELF_POSITION"</span><span class="token punctuation">,</span>\n'
+    + '    <span class="token property">"operation"</span><span class="token operator">:</span> <span class="token string">"script"</span><span class="token punctuation">,</span>\n'
+    + '    <span class="token property">"script_name"</span><span class="token operator">:</span> <span class="token string">"ctuTask.py"</span><span class="token punctuation">,</span>\n'
+    + '    <span class="token property">"script_args"</span><span class="token operator">:</span> <span class="token punctuation">{</span>\n'
+    + '        <span class="token property">"binId"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>\n'
+    + '        <span class="token property">"opType"</span><span class="token operator">:</span> <span class="token string">"put"</span><span class="token punctuation">,</span>\n'
+    + '        <span class="token property">"operation"</span><span class="token operator">:</span> <span class="token string">"external_opt"</span><span class="token punctuation">,</span>\n'
+    + '        <span class="token property">"targetHeight"</span><span class="token operator">:</span> <span class="token number">1380</span><span class="token punctuation">,</span>\n'
+    + '        <span class="token property">"targetPosition"</span><span class="token operator">:</span> <span class="token punctuation">{</span>\n'
+    + '            <span class="token property">"theta"</span><span class="token operator">:</span> <span class="token number">1.5708</span><span class="token punctuation">,</span>\n'
+    + '            <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">71.1</span><span class="token punctuation">,</span>\n'
+    + '            <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">26.3</span>\n'
+    + '        <span class="token punctuation">}</span>\n'
+    + '    <span class="token punctuation">}</span>\n'
+    + '<span class="token punctuation">}</span>\n'
+    + '</code></pre>')
 
 const extensions = [
   Document, Text, Paragraph, Heading, Blockquote, Bold, Underline, Italic, Strike, Link, History, TextStyle,
