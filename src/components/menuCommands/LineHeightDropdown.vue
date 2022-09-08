@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from 'vue';
+import { defineComponent, inject, PropType } from 'vue';
 import { Editor } from '@tiptap/vue-3';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import { isLineHeightActive } from '@/utils/line-height';
@@ -51,7 +51,7 @@ export default defineComponent({
 
   props: {
     editor: {
-      type: Editor,
+      type: Object as PropType<Editor>,
       required: true,
     },
   },

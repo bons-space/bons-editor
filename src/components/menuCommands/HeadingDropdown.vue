@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from 'vue';
+import { defineComponent, inject, PropType } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
 import { Editor } from '@tiptap/core';
 import type { Level } from '@/extensions/heading';
@@ -69,7 +69,7 @@ export default defineComponent({
 
   props: {
     editor: {
-      type: Editor,
+      type: Object as PropType<Editor>,
       required: true,
     },
 

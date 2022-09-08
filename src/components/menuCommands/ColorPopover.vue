@@ -68,7 +68,7 @@
 
 <script lang="ts">
 import {
-  computed, defineComponent, inject, ref, unref, watch,
+  computed, defineComponent, inject, PropType, ref, unref, watch,
 } from 'vue';
 import { Editor, getMarkAttributes } from '@tiptap/vue-3';
 import { ElButton, ElPopover, ElInput } from 'element-plus';
@@ -86,7 +86,7 @@ export default defineComponent({
 
   props: {
     editor: {
-      type: Editor,
+      type: Object as PropType<Editor>,
       required: true,
     },
   },

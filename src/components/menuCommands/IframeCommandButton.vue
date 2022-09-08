@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from 'vue';
+import { defineComponent, inject, PropType } from 'vue';
 import { Editor } from '@tiptap/vue-3';
 import { ElMessageBox } from 'element-plus';
 import CommandButton from './CommandButton.vue';
@@ -23,7 +23,7 @@ export default defineComponent({
 
   props: {
     editor: {
-      type: Editor,
+      type: Object as PropType<Editor>,
       required: true,
     },
   },
