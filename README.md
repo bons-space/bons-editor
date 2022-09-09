@@ -20,36 +20,51 @@
 
 所有可用的 extensions:
 
-- `Doc`
-- `Text`
-- `Paragraph`
+- `Text`（必填）
+
+#### Node扩展
+
+- `Paragraph`（必填）
+- `Document`（必填）
 - `Heading`
+- `Blockquote`
+- `CodeBlock`（tiptap默认高亮使用highlight.js的主题，详细用法见 https://tiptap.dev/api/nodes/code-block-lowlight ）
+- `PrismCodeBlock` （prism.js 扩展高亮主题）
+- `OrderedList`
+- `Image`
+- `Table` (内置 `TableHeader`, `TableCell`, `TableRow` 扩展)
+- `ListItem`
+- `TaskList`（需搭配`ListItem`扩展一起用）
+- `BulletList`（需搭配`ListItem`扩展一起用）
+- `Iframe`
+- `CustomBlock`（高亮块扩展）
+
+#### Marks扩展
+
+- `Code`
 - `Bold`
+- `TextStyle`
+- `Underline`
 - `Italic`
 - `Strike`
-- `Underline`
 - `Link`
-- `Image`
-- `Iframe`
-- `CodeBlock`
-- `Blockquote`
-- `ListItem`
-- `TodoItem`
+- `Color`
+- `Highlight`
+- `FontFamily`
+- `FontSize`
+
+#### Extensions扩展
+
+- `HardBreak`
+- `Gapcursor`
+- `HorizontalRule`
+- `History`
 - `TextAlign`
 - `Indent`
 - `LineHeight`
-- `HorizontalRule`
-- `HardBreak`
-- `TrailingNode`
-- `History`
-- `Table` (与 `TableHeader`, `TableCell`, `TableRow` 一起使用)
-- `TableHeader`
-- `TableCell`
-- `TableRow`
 - `FormatClear`
-- `TextColor`
 - `Fullscreen`
 - `SelectAll`
-- `FontType`
-- `FontSize`
 - `CodeView`
+- `PasteHandler`（自定义扩展，重置粘贴内容自带`line-hight`）
+

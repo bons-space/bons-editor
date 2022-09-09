@@ -129,3 +129,4 @@ dist
 
 .idea
 /package-lock.json
+/stats.html
