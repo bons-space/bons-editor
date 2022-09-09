@@ -76,7 +76,7 @@ import {
 import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3';
 import { ElPopover } from 'element-plus';
 import { ResizeObserver } from '@juggle/resize-observer';
-import { resolveImg, ImageDisplay } from '@/utils/image';
+import { resolveImg } from '@/utils/image';
 import { clamp } from '@/utils/shared';
 import ImageBubbleMenu from '../menuBubble/ImageBubbleMenu.vue';
 
@@ -129,79 +129,39 @@ const selectImage = (event: MouseEvent) => {
   props.editor?.commands.setNodeSelection(props.getPos!());
   onImageClick(event)
 }
-const getNodeOffset = (element: HTMLElement) => {
-  const rect = element.getBoundingClientRect()
-  const win = element.ownerDocument.defaultView
-  return {
-    top: rect.top + win!.pageYOffset,
-    left: rect.left + win!.pageXOffset,
-  }
-}
+
 const onImageClick = (event: MouseEvent) => {
   if (props.editor.view.editable) {
     return
   }
   const element = event.target as HTMLImageElement
-  let zoomShadow = (imgShadowRef.value as any) as HTMLElement
-  if (!zoomShadow) {
-    zoomShadow = document.createElement('div') as HTMLElement
-    document.body.append(zoomShadow)
-    zoomShadow.id = 'zoomShadowId'
-    zoomShadow.className = 'editor-img-bg-shadow'
-    zoomShadow.onclick = () => {
-      const img = zoomShadow?.childNodes[0] as HTMLElement
-      if (img != null) {
-        img!.style.transform = 'scale(1) translate(0px, 0px)'
-        img!.style.cursor = 'zoom-in'
-        img!.style.position = 'relative'
-      }
-      setTimeout(() => {
-        (zoomShadow as HTMLElement).style.visibility = 'hidden'
-      }, 200)
-    }
-  }
-  const offset = getNodeOffset(element)
+  const zoomShadow = (imgShadowRef.value as any) as HTMLElement
 
   zoomShadow!.style.visibility = 'visible'
   zoomShadow!.innerHTML = ''
   const img = document.createElement('img')
   img.src = element.src
-  img.style.position = 'fixed'
-  img.style.top = `${offset.top}px`
-  img.style.left = `${offset.left}px`
-  img.style.width = `${element.clientWidth}px`
-  img.style.height = `${element.clientHeight}px`
-  img.style.cursor = 'zoom-out'
+  img.style.transform = 'scale(0.5)'
   zoomShadow!.appendChild(img)
-  console.log(zoomShadow);
 
   setTimeout(() => {
-    const width = element.clientWidth
-    const height = element.clientHeight
-    const nWidth = element.naturalWidth
-    const nHeight = element.naturalHeight
-    const wWidth = window.innerWidth
-    const wHeight = window.innerHeight
-    const scaleX = Math.min(nWidth, wWidth * 0.9) / width
-    const scaleY = Math.min(nHeight, wHeight * 0.9) / height
-    const scale = Math.min(scaleX, scaleY)
-    const translateX = (-offset.left + (wWidth - width) / 2) / scale
-    const translateY = (-offset.top + (wHeight - height) / 2) / scale
-    img.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`
+    img.style.width = '80vw'
+    img.style.objectFit = 'contain'
+    img.style.transform = 'scale(1)'
     img.style.transition = 'all .2s ease-in-out'
     img.style.cursor = 'zoom-out'
-    img.style.position = 'relative'
   }, 0)
 }
 
 const onImgZoomOut = () => {
   const img = ((imgShadowRef.value as any) as HTMLElement).childNodes[0] as HTMLElement
   if (img !== null) {
-    img!.style.transform = 'scale(1) translate(0px, 0px)'
+    img!.style.transform = 'scale(1)'
     img!.style.cursor = 'zoom-in'
     img!.style.position = 'relative'
   }
   setTimeout(() => {
+    img!.style.transform = 'scale(0.5)';
     ((imgShadowRef.value as any) as HTMLElement).style.visibility = 'hidden'
   }, 200)
 }
@@ -274,11 +234,14 @@ const onMouseMove = (e: MouseEvent): void => {
   } = resizerState;
 
   const dx = (e.clientX - x) * (/l/.test(dir) ? -1 : 1);
-  const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1);
-
+  const newWidth = clamp(w + dx, MIN_SIZE, maxSize.width)
+  let newHeight = originalSize.height
+  if (newWidth * originalSize.height / originalSize.width !== newHeight) {
+    newHeight = newWidth * originalSize.height / originalSize.width
+  }
   props.updateAttributes?.({
-    width: clamp(w + dx, MIN_SIZE, maxSize.width),
-    height: Math.max(h + dy, MIN_SIZE),
+    width: newWidth,
+    height: newHeight,
   });
 }
 
@@ -307,7 +270,6 @@ const offEvents = (): void => {
 }
 
 resolveImg(src.value).then((result) => {
-  console.log(result);
   if (!result.complete) {
     result.width = MIN_SIZE;
     result.height = MIN_SIZE;
@@ -339,9 +301,11 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   z-index: 1500;
   background: rgba(0, 0, 0, 1);
   opacity: 1;
