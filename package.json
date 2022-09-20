@@ -1,19 +1,23 @@
 {
   "name": "bons-editor",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A WYSIWYG rich-text editor using tiptap and Element Plus for Vue3",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint --ext .ts,.vue src --fix",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prepublishOnly": "npm run release && npm run build"
   },
   "homepage": "https://github.com/bons-space/bons-editor#readme",
   "keywords": [
     "editor",
     "vue3",
     "tiptap"
+  ],
+  "files": [
+    "dist"
   ],
   "author": "zhxqc",
   "license": "Apache-2.0",
