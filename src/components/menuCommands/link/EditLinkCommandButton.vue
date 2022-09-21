@@ -8,7 +8,7 @@
     />
 
     <el-dialog
-      v-model:visible="editLinkDialogVisible"
+      v-model="editLinkDialogVisible"
       :title="t('editor.extensions.Link.edit.control.title')"
       :append-to-body="true"
       width="400px"

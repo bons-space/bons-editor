@@ -11,10 +11,11 @@
       editorClass,
     ]"
   >
-    <!--    <menu-bubble-->
-    <!--      :editor="editor"-->
-    <!--      :class="editorBubbleMenuClass"-->
-    <!--    />-->
+    <menu-bubble
+      v-if="!readonly"
+      :editor="editor"
+      :class="editorBubbleMenuClass"
+    />
 
     <menu-bar
       v-if="!readonly"
@@ -77,7 +78,7 @@ import { Trans } from '@/i18n';
 import { useCodeView, useCharacterCount, useEditorStyle } from '@/hooks';
 
 import MenuBar from './menuBar/Index.vue';
-// import MenuBubble from './menuBubble/Index.vue';
+import MenuBubble from './menuBubble/Index.vue';
 import zh from '@/i18n/locales/zh';
 
 const props = defineProps({
