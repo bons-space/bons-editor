@@ -17,7 +17,8 @@
     "tiptap"
   ],
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "author": "zhxqc",
   "license": "Apache-2.0",
