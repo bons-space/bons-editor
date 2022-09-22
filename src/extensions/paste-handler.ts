@@ -1,6 +1,7 @@
 import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey } from 'prosemirror-state';
 import { Node, Slice } from 'prosemirror-model';
+import { genNonDuplicateID } from '@/utils/common';
 
 const LINE_HEIGHT_DEAL_LIST = [
   'paragraph',
@@ -25,6 +26,9 @@ const PasteHandler = Extension.create({
                 const nodeJson = node.toJSON()
                 if (nodeJson.attrs && nodeJson.attrs.lineHeight) {
                   nodeJson.attrs.lineHeight = null
+                }
+                if (nodeType.name === 'heading' && nodeJson.attrs && !nodeJson.attrs.id) {
+                  nodeJson.attrs.id = genNonDuplicateID()
                 }
                 slice.content.replaceChild(index, Node.fromJSON(nodeType.schema, nodeJson))
               }
