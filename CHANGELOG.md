@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/bons-space/bons-editor/compare/v0.0.3...v0.0.5) (2022-09-22)
+
+
+### Features
+
+* 🎸 粘贴事件处理heading生成id、设置高亮块转换 ([8ca3bba](https://github.com/bons-space/bons-editor/commit/8ca3bba736e6089759c2d5af49451a101a2f2724))
+
+
+### Bug Fixes
+
+* 🐛 编辑链接弹窗 ([d6d3d18](https://github.com/bons-space/bons-editor/commit/d6d3d18b84796b999a8e6cb366ffae725ff007ec))
+
+### [0.0.4](https://github.com/bons-space/bons-editor/compare/v0.0.3...v0.0.4) (2022-09-22)
+
+
+### Features
+
+* 🎸 粘贴事件处理heading生成id、设置高亮块转换 ([8ca3bba](https://github.com/bons-space/bons-editor/commit/8ca3bba736e6089759c2d5af49451a101a2f2724))
+
+
+### Bug Fixes
+
+* 🐛 编辑链接弹窗 ([d6d3d18](https://github.com/bons-space/bons-editor/commit/d6d3d18b84796b999a8e6cb366ffae725ff007ec))
+
 ### [0.0.3](https://github.com/bons-space/bons-editor/compare/v0.0.2...v0.0.3) (2022-09-20)
 
 
