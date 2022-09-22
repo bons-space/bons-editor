@@ -6,15 +6,12 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { visualizer } from 'rollup-plugin-visualizer'; // 打包分析
 
-// @ts-ignore
-import fs from 'fs'
-
 const { resolve } = require('path')
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }: UserConfig): UserConfig => {
+export default defineConfig(({ mode }: UserConfig): UserConfig =>
   // 根据环境变量加载环境变量文件
-  return {
+  ({
     base: '/',
     server: {
       host: 'localhost',
@@ -47,20 +44,23 @@ export default defineConfig(({ mode }: UserConfig): UserConfig => {
       },
     },
     build: {
+      lib: {
+        entry: resolve(__dirname, './src'),
+        name: 'bonsEditor',
+        fileName: 'bons-editor',
+      },
       minify: 'terser', // 是否进行压缩,boolean | 'terser' | 'esbuild',默认使用esbuild
-      manifest: false, // 是否产出maifest.json
-      sourcemap: false, // 是否产出soucemap.json
-      chunkSizeWarningLimit: 1500,
+      chunkSizeWarningLimit: 500,
       rollupOptions: {
-        output: { // 输出文件拆分
-          chunkFileNames: 'assets/js/[name]-[hash].js',
+        output: {
+          exports: 'named',
+          inlineDynamicImports: true,
+          // 用于从入口点创建的块的打包输出格式[name]表示文件名,[hash]表示该文件内容hash值
           entryFileNames: 'assets/js/[name]-[hash].js',
+          // 用于命名代码拆分时创建的共享块的输出命名
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          // 用于输出静态资源的命名，[ext]表示文件扩展名
           assetFileNames: 'assets/static/[name]-[hash].[ext]',
-          manualChunks(id: any) {
-            if (id.includes('node_modules')) { //
-              return id.toString().split('node_modules/')[1].split('/')[0].toString()
-            }
-          },
         },
       },
       terserOptions: {
@@ -71,5 +71,4 @@ export default defineConfig(({ mode }: UserConfig): UserConfig => {
         },
       },
     },
-  }
-})
+  }))
