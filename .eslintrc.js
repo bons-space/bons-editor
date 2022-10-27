@@ -37,6 +37,7 @@ module.exports = {
     'no-unused-vars': 0,
     'no-multi-assign': 0,
     'no-param-reassign': 0,
+    'no-restricted-syntax': 0,
     'no-use-before-define': 0,
     'no-restricted-globals': 0,
     'no-unused-expressions': 0,

@@ -20,6 +20,7 @@ const props = defineProps({
   editor: {
     type: Editor,
     required: true,
+    default: () => {},
   },
 })
 
@@ -28,6 +29,7 @@ const enableTooltip = inject('enableTooltip', true);
 const isCodeViewMode = inject('isCodeViewMode', false);
 
 const generateCommandButtonComponentSpecs = () => {
+  console.log(props.editor);
   const extensionManager = props.editor.extensionManager;
   return extensionManager.extensions.reduce((acc:any, extension:any) => {
     const { button } = extension.options;

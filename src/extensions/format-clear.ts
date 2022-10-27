@@ -38,6 +38,7 @@ const FormatClear = Extension.create({
               (e) => e.name === name,
             );
             if (extension) {
+              // @ts-ignore
               return chain[command]();
             }
             return chain;

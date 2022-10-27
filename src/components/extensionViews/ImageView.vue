@@ -73,7 +73,7 @@
 import {
   ref, computed, onMounted, onUnmounted,
 } from 'vue';
-import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3';
+import { NodeViewWrapper, nodeViewProps, Editor } from '@tiptap/vue-3';
 import { ElPopover } from 'element-plus';
 import { ResizeObserver } from '@juggle/resize-observer';
 import { resolveImg } from '@/utils/image';
@@ -90,7 +90,14 @@ const enum ResizeDirection {
 const MIN_SIZE = 20;
 const MAX_SIZE = 100000;
 
-const props = defineProps(nodeViewProps)
+const props = defineProps({
+  ...nodeViewProps,
+  editor: {
+    type: Editor,
+    required: true,
+    default: () => {},
+  },
+})
 
 const maxSize = {
   width: MAX_SIZE,
@@ -126,7 +133,7 @@ const display = computed(() => props.node.attrs.display)
 const imageViewClass = computed(() => ['image-view', `image-view--${display.value}`])
 
 const selectImage = (event: MouseEvent) => {
-  props.editor?.commands.setNodeSelection(props.getPos!());
+  props.editor?.commands.setNodeSelection(props.getPos());
   onImageClick(event)
 }
 
@@ -137,12 +144,12 @@ const onImageClick = (event: MouseEvent) => {
   const element = event.target as HTMLImageElement
   const zoomShadow = (imgShadowRef.value as any) as HTMLElement
 
-  zoomShadow!.style.visibility = 'visible'
-  zoomShadow!.innerHTML = ''
+  zoomShadow.style.visibility = 'visible'
+  zoomShadow.innerHTML = ''
   const img = document.createElement('img')
   img.src = element.src
   img.style.transform = 'scale(0.5)'
-  zoomShadow!.appendChild(img)
+  zoomShadow.appendChild(img)
 
   setTimeout(() => {
     img.style.width = '80vw'
@@ -156,19 +163,19 @@ const onImageClick = (event: MouseEvent) => {
 const onImgZoomOut = () => {
   const img = ((imgShadowRef.value as any) as HTMLElement).childNodes[0] as HTMLElement
   if (img !== null) {
-    img!.style.transform = 'scale(1)'
-    img!.style.cursor = 'zoom-in'
-    img!.style.position = 'relative'
+    img.style.transform = 'scale(1)'
+    img.style.cursor = 'zoom-in'
+    img.style.position = 'relative'
   }
   setTimeout(() => {
-    img!.style.transform = 'scale(0.5)';
+    img.style.transform = 'scale(0.5)';
     ((imgShadowRef.value as any) as HTMLElement).style.visibility = 'hidden'
   }, 200)
 }
 
 /* invoked when window or editor resize */
 const getMaxSize = () => {
-  const { width } = getComputedStyle(props.editor!.view.dom);
+  const { width } = getComputedStyle(props.editor.view.dom);
   maxSize.width = parseInt(width, 10);
 }
 
@@ -190,7 +197,7 @@ const onMouseDown = (e: MouseEvent, dir: ResizeDirection) => {
   let {
     width,
     height,
-  } = props.node!.attrs;
+  } = props.node.attrs;
   const maxWidth = maxSize.width;
 
   if (width && !height) {
@@ -285,7 +292,7 @@ onMounted(() => {
   resizeOb = new ResizeObserver(() => {
     getMaxSize();
   });
-  resizeOb.observe(props.editor!.view.dom);
+  resizeOb.observe(props.editor.view.dom);
 })
 onUnmounted(() => {
   resizeOb.disconnect();

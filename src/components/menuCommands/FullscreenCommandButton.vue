@@ -17,7 +17,7 @@ import CommandButton from './CommandButton.vue';
 const t = inject('t') as any;
 const enableTooltip = inject('enableTooltip', true);
 const isFullscreen = inject('isFullscreen', false) as any;
-const toggleFullscreen = inject('toggleFullscreen');
+const toggleFullscreen = inject('toggleFullscreen') as any;
 
 const buttonTooltip = computed(() => (isFullscreen.value ? t('editor.extensions.Fullscreen.tooltip.exit_fullscreen') : t('editor.extensions.Fullscreen.tooltip.fullscreen')))
 </script>

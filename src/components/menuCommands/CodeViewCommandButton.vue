@@ -22,10 +22,10 @@ export default defineComponent({
   },
 
   setup() {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
     const isCodeViewMode = inject('isCodeViewMode', false);
-    const toggleIsCodeViewMode = inject('toggleIsCodeViewMode');
+    const toggleIsCodeViewMode = inject('toggleIsCodeViewMode') as any;
 
     return {
       t, enableTooltip, isCodeViewMode, toggleIsCodeViewMode,

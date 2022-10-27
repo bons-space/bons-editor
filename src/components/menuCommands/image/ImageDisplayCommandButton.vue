@@ -14,7 +14,7 @@
         }"
         class="editor-popper__menu__item"
         @mousedown="hidePopover"
-        @click="updateAttrs!({ display })"
+        @click="updateAttrs({ display })"
       >
         <span>{{
           t(`editor.extensions.Image.buttons.display.${display}`)
@@ -54,7 +54,7 @@ export default defineComponent({
   },
 
   setup() {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
 
     return { t, enableTooltip };
@@ -73,13 +73,15 @@ export default defineComponent({
 
   computed: {
     currDisplay() {
-      return this.node!.attrs.display;
+      return this.node?.attrs.display;
     },
   },
 
   methods: {
     hidePopover() {
-      this.$refs.popoverRef?.hide();
+      if (this.$refs.popoverRef) {
+        (this.$refs.popoverRef as any).hide();
+      }
     },
   },
 });

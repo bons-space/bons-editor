@@ -2,12 +2,15 @@
   <div class="link-bubble-menu">
     <slot name="prepend" />
 
-    <open-link-command-button :url="linkAttrs.href" />
-    <edit-link-command-button
+    <OpenLinkCommandButton
+      :editor="editor"
+      :url="linkAttrs.href"
+    />
+    <EditLinkCommandButton
       :editor="editor"
       :init-link-attrs="linkAttrs"
     />
-    <unlink-command-button :editor="editor" />
+    <UnlinkCommandButton :editor="editor" />
   </div>
 </template>
 

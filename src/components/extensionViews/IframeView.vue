@@ -5,7 +5,7 @@
   >
     <iframe
       class="iframe__embed"
-      :src="node!.attrs.src"
+      :src="node?.attrs.src"
     />
   </node-view-wrapper>
 </template>

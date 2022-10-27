@@ -1,4 +1,4 @@
-import { ELEMENT_TIPTAP_TIP } from '@/constants';
+const ELEMENT_TIPTAP_TIP = '[Element-Tiptap Tip]';
 
 export default class Logger {
   static warn(msg: string) {

@@ -23,7 +23,7 @@
   </node-view-wrapper>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineProps } from 'vue';
 import { NodeViewWrapper, NodeViewContent, nodeViewProps } from '@tiptap/vue-3';
 import { ElPopover } from 'element-plus';

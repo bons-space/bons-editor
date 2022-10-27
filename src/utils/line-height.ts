@@ -6,7 +6,9 @@ import {
 } from 'prosemirror-state';
 import { Node as ProsemirrorNode, NodeType } from 'prosemirror-model';
 import type { Command } from '@tiptap/core';
-import { LINE_HEIGHT_100, DEFAULT_LINE_HEIGHT } from '@/constants';
+
+export const LINE_HEIGHT_100 = 1.7;
+export const DEFAULT_LINE_HEIGHT = '100%';
 
 export const ALLOWED_NODE_TYPES = [
   'paragraph',

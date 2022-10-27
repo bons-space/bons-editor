@@ -98,7 +98,7 @@ export default defineComponent({
   },
 
   setup() {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
 
     return { t, enableTooltip };
@@ -113,7 +113,10 @@ export default defineComponent({
 
   methods: {
     updateLinkAttrs() {
-      this.editor.commands.setLink(this.linkAttrs);
+      this.editor.commands.setLink(this.linkAttrs as {
+                href: string;
+                target?: string;
+            });
 
       this.closeEditLinkDialog();
     },

@@ -16,13 +16,17 @@
 
 <script lang="ts" setup>
 import { defineProps } from 'vue';
-import { nodeViewProps } from '@tiptap/vue-3';
+import { nodeViewProps, Editor } from '@tiptap/vue-3';
 import ImageDisplayCommandButton from '../menuCommands/image/ImageDisplayCommandButton.vue';
 import EditImageCommandButton from '../menuCommands/image/EditImageCommandButton.vue';
 import RemoveImageCommandButton from '../menuCommands/image/RemoveImageCommandButton.vue';
 
 defineProps({
-  editor: nodeViewProps.editor,
+  editor: {
+    type: Editor,
+    required: true,
+    default: () => {},
+  },
   node: nodeViewProps.node,
   updateAttrs: nodeViewProps.updateAttributes,
 })

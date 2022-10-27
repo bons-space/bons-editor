@@ -67,7 +67,7 @@ export default defineComponent({
   },
 
   setup(_, { emit }) {
-    const t = inject('t');
+    const t = inject('t') as any;
 
     const popoverRef = ref();
     const popoverVisible = ref(false);

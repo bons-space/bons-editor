@@ -1,13 +1,13 @@
 import { Plugin } from 'vue';
-import Editor from '@/components/Editor.vue';
+import Editor from './components/BonsEditor.vue';
 
 const EditorPlugin: Plugin = {
   install(app) {
-    app.component('BonsTiptap', Editor);
+    app.component('BonsEditor', Editor);
   },
 };
 
-export * from '@/extensions';
+export * from './extensions';
 
 export { EditorPlugin, Editor };
 

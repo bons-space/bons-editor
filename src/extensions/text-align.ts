@@ -16,7 +16,7 @@ const TextAlign = TiptapTextAlign.extend({
         extension: Extension;
         t: (...args: any[]) => string;
       }) {
-        return extension.options.alignments.reduce((acc, alignment) => acc.concat({
+        return extension.options.alignments.reduce((acc: any[], alignment:string) => acc.concat({
           component: CommandButton,
           componentProps: {
             command: () => {

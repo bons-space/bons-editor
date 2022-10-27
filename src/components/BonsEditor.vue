@@ -69,9 +69,12 @@ import {
   unref,
   watchEffect,
   PropType,
+  shallowRef,
+  onMounted,
+  onBeforeUnmount,
 } from 'vue';
-import { Editor, Extensions } from '@tiptap/core';
-import { EditorContent, useEditor } from '@tiptap/vue-3';
+import { Editor as TiptapEditor, Extensions } from '@tiptap/core';
+import { Editor, EditorContent, useEditor } from '@tiptap/vue-3';
 import TiptapPlaceholder from '@tiptap/extension-placeholder';
 import CharacterCount from '@tiptap/extension-character-count';
 import { Trans } from '@/i18n';
@@ -187,7 +190,7 @@ const extensions = props.extensions
   ])
   .filter(Boolean);
 
-const onUpdate = ({ editor }: { editor: Editor }) => {
+const onUpdate = ({ editor }: { editor: TiptapEditor }) => {
   let output;
   if (props.output === 'html') {
     output = editor.getHTML();
@@ -200,27 +203,35 @@ const onUpdate = ({ editor }: { editor: Editor }) => {
   emit('onUpdate', output, editor);
 };
 
-const editor = useEditor({
-  content: props.content,
-  extensions,
-  editable: !props.readonly,
-  onCreate: (options) => {
-    emit('onCreate', options);
-  },
-  onTransaction: (options) => {
-    emit('onTransaction', options);
-  },
-  onFocus: (options) => {
-    emit('onFocus', options);
-  },
-  onBlur: (options) => {
-    emit('onBlur', options);
-  },
-  onDestroy: (options) => {
-    emit('onDestroy', options);
-  },
-  onUpdate,
-});
+const editor = shallowRef<Editor>()
+
+onMounted(() => {
+  editor.value = new Editor({
+    content: props.content,
+    extensions,
+    editable: !props.readonly,
+    onCreate: (options) => {
+      emit('onCreate', options);
+    },
+    onTransaction: (options) => {
+      emit('onTransaction', options);
+    },
+    onFocus: (options) => {
+      emit('onFocus', options);
+    },
+    onBlur: (options) => {
+      emit('onBlur', options);
+    },
+    onDestroy: (options) => {
+      emit('onDestroy', options);
+    },
+    onUpdate,
+  });
+})
+
+onBeforeUnmount(() => {
+  editor.value?.destroy()
+})
 
 watchEffect(() => {
   unref(editor)?.setOptions({
@@ -265,6 +276,6 @@ provide('t', t);
 <style lang="scss">
 @import '../styles/editor.scss';
 @import '../styles/command-button.scss';
-//@import "highlight.js/styles/atom-one-dark.css";
 @import 'prism-themes/themes/prism-one-dark.css';
+
 </style>

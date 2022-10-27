@@ -43,7 +43,7 @@
 <script lang="ts">
 import { defineComponent, inject } from 'vue';
 import { Editor, BubbleMenu } from '@tiptap/vue-3';
-import { getMarkRange } from '@tiptap/core';
+import { AnyExtension, getMarkRange } from '@tiptap/core';
 import { TextSelection, AllSelection, Selection } from 'prosemirror-state';
 import VIcon from '../Icon/Icon.vue';
 import LinkBubbleMenu from './LinkBubbleMenu.vue';
@@ -67,6 +67,7 @@ export default defineComponent({
     editor: {
       type: Editor,
       required: true,
+      default: () => {},
     },
 
     menuBubbleOptions: {
@@ -76,7 +77,7 @@ export default defineComponent({
   },
 
   setup() {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
     const isCodeViewMode = inject('isCodeViewMode', false);
 
@@ -130,7 +131,7 @@ export default defineComponent({
   methods: {
     generateCommandButtonComponentSpecs() {
       const extensionManager = this.editor.extensionManager;
-      return extensionManager.extensions.reduce((acc, extension) => {
+      return extensionManager.extensions.reduce((acc: any[], extension: AnyExtension) => {
         if (!extension.options.bubble) return acc;
         const { button } = extension.options;
         if (!button || typeof button !== 'function') return acc;

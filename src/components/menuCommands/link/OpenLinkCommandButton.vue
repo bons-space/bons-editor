@@ -28,11 +28,12 @@ export default defineComponent({
     url: {
       type: String,
       required: true,
+      dafault: '',
     },
   },
 
   setup() {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
 
     return { t, enableTooltip };

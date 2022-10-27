@@ -57,7 +57,7 @@ export default defineComponent({
   },
 
   setup() {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
     const isCodeViewMode = inject('isCodeViewMode', false);
 
@@ -66,6 +66,7 @@ export default defineComponent({
 
   computed: {
     fontFamilies() {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const fontFamilyOptions = this.editor.extensionManager.extensions.find(
         (e) => e.name === 'fontFamily',
       )!.options;

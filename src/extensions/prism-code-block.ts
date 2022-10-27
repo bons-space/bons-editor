@@ -1,5 +1,7 @@
 import CodeBlock, { CodeBlockOptions } from '@tiptap/extension-code-block'
-import { Plugin, PluginKey } from 'prosemirror-state'
+import {
+  EditorState, Plugin, PluginKey, Transaction,
+} from 'prosemirror-state'
 import { Editor, findChildren } from '@tiptap/core'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Decoration, DecorationSet } from 'prosemirror-view'
@@ -101,12 +103,12 @@ const PrismCodeBlock = CodeBlock.extend<CodeBlockPrismOptions>({
         key: new PluginKey('prismPlugin'),
 
         state: {
-          init: (_, { doc }) => getDecorations({
+          init: (_: any, { doc }: any) => getDecorations({
             doc,
             name,
             defaultLanguage: options.defaultLanguage,
           }),
-          apply(transaction, decorationSet, oldState, newState) {
+          apply(transaction: Transaction, decorationSet: DecorationSet, oldState:EditorState, newState) {
             const oldNodeName = oldState.selection.$head.parent.type.name
             const newNodeName = newState.selection.$head.parent.type.name
             const oldNodes = findChildren(oldState.doc, (node) => node.type.name === name)
@@ -147,7 +149,7 @@ const PrismCodeBlock = CodeBlock.extend<CodeBlockPrismOptions>({
         },
 
         props: {
-          decorations(state) {
+          decorations(state: any) {
             // @ts-ignore
             return this.getState(state)
           },

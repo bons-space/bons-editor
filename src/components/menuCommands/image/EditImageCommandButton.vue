@@ -109,7 +109,7 @@ const props = defineProps({
   updateAttrs: nodeViewProps.updateAttributes,
 })
 
-const t = inject('t');
+const t = inject('t') as any;
 const enableTooltip = inject('enableTooltip', true);
 
 const editImageDialogVisible = ref(false)

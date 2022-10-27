@@ -130,3 +130,6 @@ dist
 .idea
 /package-lock.json
 /stats.html
+/es/
+/lib/
+/pnpm-lock.yaml

@@ -69,7 +69,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const t = inject('t');
+    const t = inject('t') as any;
     const enableTooltip = inject('enableTooltip', true);
     const isCodeViewMode = inject('isCodeViewMode', false);
 

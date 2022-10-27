@@ -4,11 +4,10 @@ import TiptapImage from '@tiptap/extension-image';
 import InsertImageCommandButton from '@/components/menuCommands/Image/InsertImageCommandButton.vue';
 import ImageView from '@/components/extensionViews/ImageView.vue';
 import { ImageDisplay } from '@/utils/image';
-import {
-  DEFAULT_IMAGE_WIDTH,
-  DEFAULT_IMAGE_DISPLAY,
-  DEFAULT_IMAGE_URL_REGEX,
-} from '@/constants';
+
+export const DEFAULT_IMAGE_URL_REGEX = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
+export const DEFAULT_IMAGE_WIDTH = 200;
+export const DEFAULT_IMAGE_DISPLAY = ImageDisplay.INLINE;
 
 const Image = TiptapImage.extend({
   // https://github.com/ueberdosis/tiptap/issues/1206
