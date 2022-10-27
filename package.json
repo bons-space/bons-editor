@@ -86,7 +86,6 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-typescript": "^0.14.0",
     "eslint-plugin-vue": "^9.5.1",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
@@ -112,7 +111,7 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged --no-verify",
+    "pre-commit": "lint-staged",
     "commit-msg": "commitlint -E GIT_PARAMS"
   },
   "engines": {
@@ -120,7 +119,7 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
-      "yarn lint"
+      "git add ."
     ]
   },
   "config": {

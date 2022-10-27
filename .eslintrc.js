@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     semi: 0,
     camelcase: 0,
+    'vue/multi-word-component-names': 'off',
     'max-len': 0,
     'consistent-return': 0,
     'default-param-last': 0,
